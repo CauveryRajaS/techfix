@@ -1,0 +1,60 @@
+<!--<div class="progress" [style]=load>
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow=inc
+    aria-valuemin="0" aria-valuemax="100" [style]=load>
+    </div>
+  </div>-->
+   
+  <h2 class="page-header">Login</h2>
+  <form (submit)="onLoginSubmit()">
+    <div class="form-group">
+      <label>email<sup>*</sup></label>
+      <input type="text" class="form-control" [(ngModel)]="email" name="email">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" [(ngModel)]="password" name="password">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Login">
+    <br><br>
+    <span (click)="forgot()">
+      <a>Forgot Password ?</a>
+    </span>
+  </form>
+
+  <div class="backdrop" [ngStyle]="{'display':forgotFlag}"></div>
+  <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':forgotFlag}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Prove us its you</h2>
+        </div>
+        <div class="modal-body">
+          <div [ngStyle]="{'display':'block'}">
+            <form (submit)="view()">
+              <h4 *ngIf="user">{{user.question}}</h4>
+              <input type="password" class="form-control" [(ngModel)]="answer" name="answer">
+              <input type="submit" class="btn btn-info" value="Submit"> 
+              <br>
+              <h3 *ngIf="passFlag">
+                Your password : {{user.copy}}
+              </h3><br>
+              <h5 *ngIf="wrong" style="color:red">
+                  Wrong answer!
+              </h5>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="onClose()" >Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+<div *ngIf=spin class="spinner">
+    <div class="spinner_1"></div>
+    <div class="spinner_2"></div>
+    <div class="spinner_3"></div>
+    <div class="spinner_4"></div>
+</div>

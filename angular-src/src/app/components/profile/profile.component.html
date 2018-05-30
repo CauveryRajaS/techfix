@@ -1,0 +1,93 @@
+<div *ngIf="user">
+
+<div class="row">
+
+<div class="col-md-5 col-xs-11">
+  <h2 class="page-header">{{user.name}}</h2>
+</div>
+
+</div>
+
+  <ul class="list-group">
+    <li class="list-group-item">Contact No. :  {{user.contact}}</li>
+    <li class="list-group-item">Email : {{user.email}}</li>
+    <li class="list-group-item">Password Recovery Question : {{user.question}}</li>
+    <li class="list-group-item">Answer : {{user.answer}}</li>
+  </ul>
+</div>
+
+<button class="btn btn-info" (click)="editor()">Edit Profile</button>
+
+<div class="backdrop" [ngStyle]="{'display':editFlag}"></div>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':editFlag}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Edit your details</h2>
+      </div>
+      <div class="modal-body">
+        <div [ngStyle]="{'display':'block'}">
+          <form (submit)="sendUser()" *ngIf="user">
+              <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control" [(ngModel)]="user.name" name="name">
+              </div>
+              <div class="form-group">
+                  <label>Contact</label>
+                  <input type="text" class="form-control" [(ngModel)]="user.contact" name="contact">
+              </div>
+              <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" class="form-control" [(ngModel)]="password" name="password">
+              </div>
+              <div class="form-group">
+                  <label>Confirm Password</label>
+                  <input type="password" class="form-control" [(ngModel)]="confirm" name="confirm">
+              </div>
+              <div class="form-group">
+                  <label>Password Recovery Question</label>
+                  <input type="text" class="form-control" [(ngModel)]="user.question" name="question">
+              </div>
+              <div class="form-group">
+                  <label>Answer</label>
+                  <input type="text" class="form-control" [(ngModel)]="user.answer" name="answer">
+              </div>
+
+            <input type="submit" class="btn btn-info" value="Submit"><br>
+            <br>
+
+            <h5 *ngIf="req" style="color:red;margin-right:10px">
+                Every field is required!
+            </h5>
+
+            <h5 *ngIf="pass" style="color:red;margin-right:10px">
+                Password mismatch!
+            </h5>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="onClose()" >Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf=spin class="spinner">
+    <div class="spinner_1"></div>
+    <div class="spinner_2"></div>
+    <div class="spinner_3"></div>
+    <div class="spinner_4"></div>
+</div>
+<!--
+<div *ngIf="avatar">
+  <div class="well col-md-2 col-xs-5" *ngFor="let img of pics">
+    <img [src]=img alt="pic" (click)="trigger(img)">
+  </div>
+  <button class="btn btn-success" (click)="apply()">Apply pic</button>
+</div>
+-->
+
+
