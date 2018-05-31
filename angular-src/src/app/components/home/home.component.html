@@ -10,7 +10,7 @@
           <span class="icon-bar"></span> 
         </button>
       </div>
-      <div class="collapse navbar-collapse" id="myNavbar" style="font-size:18px;margin-bottom:10px;">
+      <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li class="active"><a [ngStyle]="marginLeft" href="#home" class="scroll">Home</a></li>
           <li><a href="#showcase1" class="scroll">Services</a></li>
@@ -28,7 +28,7 @@
 
   <div class="wrapper">
 
-  <div class="home">
+  <div class="home section">
   <div>
       <div class="greeting row section">
         <div class="greetingHeader">You have reached us for</div>
@@ -54,6 +54,19 @@
           Accessories Purchase
         </div>
       </div>
+
+      <div class="greetingMobile row">
+          <div class="jargon col-xs-6">
+              <a routerLink="/register"><span class="glyphicon glyphicon-user icons"></span><br>Sign Up</a>
+          </div>
+          <div class="jargon col-xs-6">
+              <a routerLink="/login"><span class="glyphicon glyphicon-log-in icons"></span><br>Login</a>
+          </div>
+      </div>
+
+      <div class="appTitle">
+          Techfix Solutions
+      </div>
     
     
     <!--<img class="cover-image" src="../../../assets/img1_2.jpg" alt="cover image">
@@ -69,7 +82,7 @@
     
       <!--<section class="section" id="purpose">-->
 
-      <div class="row">
+      <div class="row section">
       <section class="section" id="showcase1">
       </section>
       <section class="section" id="showcase">
@@ -90,7 +103,7 @@
       
           <div class="offer col-xs-10 col-md-3 card container">
             <img src="" class="image">
-            <h4 class="title image">End point security</h4>
+            <h4 class="title image">Endpoint security</h4>
             <div class="middle">
                 <div class="text">
                   <h4>End point security</h4>
@@ -98,7 +111,7 @@
                 </div>
             </div>
           </div>
-      
+      <!--
           <div class="offer col-xs-10 col-md-3 card container">
             <img src="" class="image">
             <h4 class="title image">Desktop & Laptop Sales & Service</h4>
@@ -109,7 +122,7 @@
                 </div>
             </div>
           </div>
-          
+        -->   
           <div class="offer col-xs-10 col-md-3 card container">
             <img src="" class="image">
             <h4 class="title image">Network Patching & Cabling</h4>
@@ -181,12 +194,12 @@
       
       <!--<section class="section" id="profile">-->
       <div class="row">
-      <section class="section" id="host1">
+      <section  id="host1">
       </section>
       </div>
 
 
-      <div class="row">
+      <div class="row section">
       <section class="section" id="host">
           <div class="row">
             <div class="col-xs-10 col-md-12">
@@ -223,7 +236,7 @@
       </div>
 
 
-      <div class="row" style="margin-top:-25vh">
+      <div class="row section" style="margin-top:-25vh">
       <section id="contact2" class="section">
         <div class="row row1">
           <div class="cols col-xs-12 col-md-1">

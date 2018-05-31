@@ -294,7 +294,27 @@
       display: inline-block;
   }
   
+  .active { 
+    color:blue;
+    background:none;
+  }
   
+  .cover-img {
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+  }
+
+
+  .greetingMobile,.appTitle {
+    display: none;
+  }
   
   
     @media only screen and (max-width: 1200px) { 
@@ -316,6 +336,35 @@
         margin-left:3%;
         height:100px;/*
         padding: 20px;*/
+      }
+    
+      .greetingMobile {
+        display: block;
+        background: rgba(244, 241, 241, 0.50);
+        height:20%;
+        text-align: center;
+        padding:5px;
+      }
+
+      .greeting,.navbar {
+        display: none;
+      }
+
+      .appTitle {
+        display: block;
+        position: fixed;
+        top:0;
+        left:0;
+        background:rgba(242, 44, 44, 0.51);
+        font-size:25px;
+        padding:7px;
+        width:100%;
+        text-align:center;
+      }
+
+      .jargon:hover {
+        background:white;
+        color:rgba(242, 44, 44, 1);
       }
     }
 
