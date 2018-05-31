@@ -69,13 +69,20 @@
     display:inline-block;
   }
   
-  .offer {
+  .offer1 {/*
     border-radius: 5px;
-    margin:40px;
-    height:100px;
-    padding: 20px;
+    margin:60px;
+    height:250px;
+    padding: 20px;*/
+    margin-left:150px;
   }
-  
+
+  .offer {
+    margin:30px 60px;
+  }
+
+
+ /* 
   .card {
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
       transition: 0.3s;
@@ -83,7 +90,7 @@
   
   .card:hover {
       box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
+  }*/
   /*
   .container {
       position: relative;
@@ -91,12 +98,18 @@
   */
 
   .image {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
     opacity: 1;
     display: block;
-    width: 100%;
-    height: auto;
+    width: 400px;
+    height: 250px;
     transition: .5s ease;
     backface-visibility: hidden;
+  }
+
+  .image:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
   
   .middle {
@@ -132,6 +145,11 @@
   
   .title {
     opacity:1;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color:white;
   }
   
   #host1 {/*
@@ -319,6 +337,24 @@
   
     @media only screen and (max-width: 1200px) { 
           
+      .home {
+        background: url(../../../assets/home.jpg) no-repeat center center fixed;
+      }
+
+      .image {
+        width:300px;
+        height:200px;
+      }
+
+      .offer1 {
+        margin-left:0;
+      }
+
+      
+      .offer {
+        margin:20px 0px;
+      }
+
       .hideImg {
         border:10px inset white;
         border-radius: 50%;

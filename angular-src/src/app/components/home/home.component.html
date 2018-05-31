@@ -15,7 +15,7 @@
           <li class="active"><a [ngStyle]="marginLeft" href="#home" class="scroll">Home</a></li>
           <li><a href="#showcase1" class="scroll">Services</a></li>
           <li><a href="#host1" class="scroll">About</a></li>
-          <li><a href="#contact" class="scroll">Contact</a></li>
+          <li><a href="#contact2" class="scroll">Contact</a></li>
           <li class="pull-right" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
             <a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
           <li class="pull-right" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
@@ -28,7 +28,7 @@
 
   <div class="wrapper">
 
-  <div class="home section">
+  <div class="home section" id="home">
   <div>
       <div class="greeting row section">
         <div class="greetingHeader">You have reached us for</div>
@@ -81,18 +81,22 @@
 
     
       <!--<section class="section" id="purpose">-->
+  <div class="row section" id="showcase1">
+      <section class="section">
+      </section>
+  </div>
 
       <div class="row section">
-      <section class="section" id="showcase1">
-      </section>
       <section class="section" id="showcase">
         <div class="row try">
           <div class="col-xs-10 col-md-12 animated infinite bounce">
-              <img id="" src="../../../assets/offer2.svg" alt="img">
+              <img id="" src="../../../assets/offer2.svg" alt="img" style="height:150px">
           </div>
-          <div class="offer col-xs-10 col-md-3 card container">
-            <img src="" class="image">
-            <h4 class="title image">Software Installations & Troubleshooting</h4>
+        </div>
+        <div class="offer1">
+          <div class="offer col-xs-10 col-md-4 card container">
+            <img src="../../../assets/software.jpg" class="image">
+            <h4 class="title">Software Installations & Troubleshooting</h4>
             <div class="middle">
                 <div class="text">
                   <h4>Software Installations & Troubleshooting</h4>
@@ -101,9 +105,9 @@
             </div>
           </div>
       
-          <div class="offer col-xs-10 col-md-3 card container">
-            <img src="" class="image">
-            <h4 class="title image">Endpoint security</h4>
+          <div class="offer col-xs-10 col-md-4 card container">
+            <img src="../../../assets/endpoint.jpg" class="image">
+            <h4 class="title">Endpoint security</h4>
             <div class="middle">
                 <div class="text">
                   <h4>End point security</h4>
@@ -123,9 +127,9 @@
             </div>
           </div>
         -->   
-          <div class="offer col-xs-10 col-md-3 card container">
-            <img src="" class="image">
-            <h4 class="title image">Network Patching & Cabling</h4>
+          <div class="offer col-xs-10 col-md-4 card container">
+            <img src="../../../assets/network.jpg" class="image">
+            <h4 class="title">Network Patching & Cabling</h4>
             <div class="middle">
                 <div class="text">
                   <h4>Network Patching & Cabling</h4>
@@ -134,9 +138,9 @@
             </div>
           </div>
       
-          <div class="offer col-xs-10 col-md-3 card container">
-            <img src="" class="image">
-            <h4 class="title image">Data Centre Maintenance</h4>
+          <div class="offer col-xs-10 col-md-4 card container">
+            <img src="../../../assets/data.jpg" class="image">
+            <h4 class="title">Data Centre Maintenance</h4>
             <div class="middle">
                 <div class="text">
                   <h4>Data Centre Maintenance</h4>
@@ -144,9 +148,9 @@
                 </div>
             </div>
           </div>
-      
+      <!--
           <div class="offer col-xs-10 col-md-3 card container">
-            <img src="" class="image">
+            <img src="../../../assets/software.jpg" class="image">
             <h4 class="title image">Data recovery & Backup setup</h4>
             <div class="middle">
                 <div class="text">
@@ -155,10 +159,10 @@
                 </div>
             </div>
           </div>
-      
-          <div class="offer col-xs-10 col-md-3 card container">
-            <img src="" class="image">
-            <h4 class="title image">Laptop Accessories Sales</h4>
+        -->
+          <div class="offer col-xs-10 col-md-4 card container">
+            <img src="../../../assets/lap-access.jpg" class="image">
+            <h4 class="title">Laptop Accessories Sales</h4>
             <div class="middle">
                 <div class="text">
                   <h4>Laptop Accessories Sales</h4>
@@ -167,9 +171,9 @@
             </div>
           </div>
       
-          <div class="offer col-xs-10 col-md-3 card container">
-            <img src="" class="image">
-            <h4 class="title image">Desktop Accessories Sales</h4>
+          <div class="offer col-xs-10 col-md-4 card container">
+            <img src="../../../assets/desk-access.jpg" class="image">
+            <h4 class="title">Desktop Accessories Sales</h4>
             <div class="middle">
                 <div class="text">
                   <h4>Desktop Accessories Sales</h4>
@@ -177,7 +181,7 @@
                 </div>
             </div>
           </div>
-      
+      <!--
           <div class="offer col-xs-10 col-md-3 card container">
             <img src="" class="image">
             <h4 class="title image">Network devices Sales & Maintenance</h4>
@@ -187,14 +191,14 @@
                   <h5>Any required softwares can be installed and troubled anytime required.</h5>
                 </div>
             </div>
-          </div>
+          </div>-->
         </div>
       </section>
       </div>
-      
+    
       <!--<section class="section" id="profile">-->
-      <div class="row">
-      <section  id="host1">
+      <div class="row" id="host1">
+      <section>
       </section>
       </div>
 
@@ -230,14 +234,14 @@
         <img id="img2" src="../../../assets/img2.jpg" alt="img">
       </div>
 
-      <div class="row">
-      <section id="contact">
+      <div class="row" id="contact">
+      <section>
       </section>
       </div>
 
 
-      <div class="row section" style="margin-top:-25vh">
-      <section id="contact2" class="section">
+      <div class="row section" id="contact2">
+      <section class="section">
         <div class="row row1">
           <div class="cols col-xs-12 col-md-1">
             <h5>Home</h5>
@@ -282,7 +286,7 @@
       </section>
     </div>
   </div>
-  
+
 
 <!--
 <div class="spinner">
