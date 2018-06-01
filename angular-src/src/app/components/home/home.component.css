@@ -177,8 +177,8 @@
   }
   
   .motto {
-    margin:40px;/*
-    margin-left:3%;*/
+    margin:40px;
+    margin-top:100px;
     height:100px;
     padding: 20px;
   }
@@ -329,6 +329,25 @@
       background-size: cover;
   }
 
+  .pic {
+    padding-top:30px;
+    padding-bottom:50px;
+    padding-left:30px;
+    padding-right:30px;
+    margin:40px;
+    margin-left:30%;
+    width:350px;
+    height:500px;
+    background: #EAE7E7;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transform: rotate(-20deg);
+  }
+
+  .hostImg {
+    width:300px;
+    height:400px;
+  }
+
 
   .greetingMobile,.appTitle {
     display: none;
@@ -370,6 +389,7 @@
       .motto {/*
         margin-bottom:20px;*/
         margin-left:3%;
+        margin-top:0px;
         height:100px;/*
         padding: 20px;*/
       }
@@ -391,7 +411,7 @@
         position: fixed;
         top:0;
         left:0;
-        background:rgba(242, 44, 44, 0.51);
+        background:rgba(44, 84, 242, 0.51);
         font-size:25px;
         padding:7px;
         width:100%;
@@ -400,8 +420,26 @@
 
       .jargon:hover {
         background:white;
-        color:rgba(242, 44, 44, 1);
+        color:rgb(77, 44, 242);
       }
+
+      .pic {
+        padding-top:30px;
+        padding-bottom:50px;
+        padding-left:30px;
+        padding-right:30px;
+        margin:40px;
+        margin-left:10%;
+        width:250px;
+        height:350px;
+        transform: rotate(-20deg);
+      }
+    
+      .hostImg {
+        width:200px;
+        height:250px;
+      }
+    
     }
 
     

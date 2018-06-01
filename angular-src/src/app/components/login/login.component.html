@@ -4,11 +4,14 @@
     </div>
   </div>-->
    
+  <div class="container card">
   <h2 class="page-header">Login</h2>
+
+  <input id="inp1" type="text">
   <form (submit)="onLoginSubmit()">
     <div class="form-group">
       <label>email<sup>*</sup></label>
-      <input type="text" class="form-control" [(ngModel)]="email" name="email">
+      <input style="border:none;border-bottom:1px solid blue" type="text" class="form-control" [(ngModel)]="email" name="email">
     </div>
     <div class="form-group">
       <label>Password</label>
@@ -20,7 +23,7 @@
       <a>Forgot Password ?</a>
     </span>
   </form>
-
+  </div>
   <div class="backdrop" [ngStyle]="{'display':forgotFlag}"></div>
   <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':forgotFlag}">
     <div class="modal-dialog" role="document">

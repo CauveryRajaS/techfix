@@ -1,0 +1,27 @@
+#inp1:focus {
+    outline:none;
+    border:none;
+    border-bottom:2px solid blue;
+    background: none;
+}
+
+#inp1,.form-control{ 
+    background:none;
+    border:none;
+    border-bottom:2px solid blue;
+    width:50%;
+    border-radius: 0;
+    outline: none;
+}
+
+.form-group { 
+    background:none;
+    border:none;
+    outline: none;
+}
+
+.card {
+    background:lightblue;
+    box-shadow: 0px 8px 16px 0 rgba(0,0,0,0.2);
+    padding:2%;
+}
