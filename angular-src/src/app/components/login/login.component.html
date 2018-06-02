@@ -3,19 +3,16 @@
     aria-valuemin="0" aria-valuemax="100" [style]=load>
     </div>
   </div>-->
-   
   <div class="container card">
   <h2 class="page-header">Login</h2>
-
-  <input id="inp1" type="text">
   <form (submit)="onLoginSubmit()">
     <div class="form-group">
-      <label>email<sup>*</sup></label>
-      <input style="border:none;border-bottom:1px solid blue" type="text" class="form-control" [(ngModel)]="email" name="email">
+        <label>email<sup>*</sup></label>
+        <input type="text" class="form-control" placeholder="Enter your email" [(ngModel)]="email" name="email">
     </div>
     <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" [(ngModel)]="password" name="password">
+      <label>Password</label><i class="fa fa-"></i>
+      <input type="password" class="form-control" placeholder="Enter your password" [(ngModel)]="password" name="password">
     </div>
     <input type="submit" class="btn btn-primary" value="Login">
     <br><br>
