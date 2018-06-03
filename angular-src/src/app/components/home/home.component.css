@@ -6,34 +6,85 @@
   grid-template-columns: 1fr;
   grid-gap: 10vh;
 }
-
+/*
 .home {
   width:99vw;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-auto-rows: 97vh;
   background: url(../../../assets/img1_2.jpg) no-repeat center center fixed;
+  background:grey;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   align-items: end;
 }
+*/
+
+.home {
+  width:99vw;
+  height:99vh;
+  display: grid;
+  grid-template-rows: 0.3fr 2fr 0.7fr;
+  background:#1792BA;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.banner {
+  padding-top:11vh;
+  font-size:20px;
+  color:white;
+}
+
+.bannerGreet {
+  background: white;
+}
+
+.homebtn {
+  color:white;
+  text-decoration:none;
+  border:1px solid white;
+  padding:2vh;
+  font-size:25px;
+  margin:20px;
+  margin-left:0;
+}
+
+.homebtn:hover {
+  color:#1792BA;
+  text-decoration:none;
+  border:1px solid #1792BA;
+  background: white;
+}
+
+.banner1 {
+  width:200px;
+}
+
+.banner2 {
+  margin:auto 0;
+}
 
 .greeting {/*
   top:80%;
   left:0;
   right:0;
-  position:absolute;*/
-  background: rgba(244, 241, 241, 0.50);
-  height:20%;
+  position:absolute;
+  background: rgba(244, 241, 241, 0.50);*/
+  background: white;
+  height:5vh;/*
+  padding-bottom: 10px;*/
   text-align: center;
 }
 
 .greetingHeader {
   font-size:20px;
   padding-bottom:8px;
-  padding-top:4;
+  padding-top:8px;
 }
 
 .jargon {
@@ -43,6 +94,7 @@
 
 .icons {
   margin-bottom: 10px;
+  color:#1792BA;
   font-size: 45px;/*
   padding-right: 5px;*/
   padding:0;
@@ -134,9 +186,9 @@
   .container:hover .title {
     opacity: 0;
   }
-  
+
   .text {
-    background-color: #4CAF50;
+    background-color:#1792BA;
     color: white;
     font-size:0px;
     padding: 5px 10px;
@@ -223,8 +275,8 @@
       top:395%;
       left:0;*/
       margin-top:-20vh;
-      width:100%;
-      background: rgba(0, 0, 0, 0.5);
+      width:102%;
+      background: rgba(23, 146, 186, 0.5);
   }
     
 
@@ -237,7 +289,7 @@
   
   h3,div {
       font-family: 'Arsenal';
-    }
+  }
   /*
   .titleBar {
       text-align:center;
@@ -253,7 +305,7 @@
 
    
     .navbar {
-      background:rgba(242, 44, 44, 0.51);
+      background: rgba(244, 241, 241, 0.50);
       border: none;
       width: 100%;
       color:black;
@@ -265,14 +317,14 @@
     }
     
     .navbar-header {
-      font-size: 25px;
+      font-size:25px;
       width:100%;
       text-align: center;
       color:black;
     }
     
-    
     .navbar-header > a {
+      color:black;
       float: none;
       display: inline-block;
     }
@@ -291,7 +343,7 @@
     
     .navbar-nav > li :hover {
       text-align: center;
-      color:blue;
+      color:white;
     }
   
     .navbar-nav {  
@@ -307,14 +359,14 @@
   .navbar-default .navbar-nav>.active>a,
   .navbar-default .navbar-nav>.active>a:hover,
   .navbar-default .navbar-nav>.active>a:focus {
-      color:blue;
+      color:white;
       background:none;
-      border-bottom: 1.5px solid blue;
+      border-bottom: 1.5px solid white;
       display: inline-block;
   }
   
   .active { 
-    color:blue;
+    color:white;
     background:none;
   }
   
@@ -357,9 +409,28 @@
   
     @media only screen and (max-width: 1200px) { 
           
-      .home {
-        background: url(../../../assets/home.jpg) no-repeat center center fixed;
+      .home {/*
+        background: url(../../../assets/home.jpg) no-repeat center center fixed;*/
       }
+
+      .homebtn {
+        display:none;
+      }
+
+      .banner {
+        padding-top:1vh;
+        font-size:20px;
+        color:white;
+      }
+      
+      .banner1 {
+        width:100px;
+      }
+
+      .banner2 {
+        margin:0 0px;
+        width:200px;
+}
 
       .image {
         width:300px;
@@ -367,7 +438,7 @@
       }
 
       .offer1 {
-        margin-left:0;
+        margin-left:3vw;
       }
 
       
@@ -403,22 +474,22 @@
         padding:5px;
       }
 
-      .greeting,.navbar {
+      .greeting,.navbar-collapse,.navbar-toggle {
         display: none;
       }
-
+/*
       .appTitle {
         display: block;
         position: fixed;
         top:0;
         left:0;
-        background:rgba(44, 84, 242, 0.51);
+        background: rgba(1, 44, 58, 0.50);
         font-size:25px;
         padding:7px;
         width:100%;
         text-align:center;
       }
-
+*/
       .jargon:hover {
         background:white;
         color:rgb(77, 44, 242);

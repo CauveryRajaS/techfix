@@ -1,3 +1,5 @@
+
+/*
 #inp1:focus {
     outline:none;
     border:none;
@@ -18,7 +20,24 @@
     background:none;
     border:none;
     outline: none;
-}
+}*/
+
+
+.loginbtn {
+    color:white;
+    text-decoration:none;
+    border:1px solid #1792BA;
+    padding:1vh;
+    font-size:17px;
+    margin:20px;
+    width:100%;
+    margin-left:0;
+    background:#1792BA;
+  }
+  
+.page-header {
+    color:#1792BA;
+} 
 
 .card {
     margin:5% auto;

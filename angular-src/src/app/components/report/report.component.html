@@ -4,19 +4,19 @@
           <div class="panel-heading">
             <h4 class="panel-title">
               <a data-toggle="collapse" href="#{{i}}">{{ticket.problem}}</a>
-              <button><i class="fa fa-trash" (click)="deleteTicket(ticket.problem,ticket.email)" style="float:right;margin-right:10px;color:red"></i></button>
-              <button><i class="fa fa-close" (click)="uncheck(ticket.problem,ticket.email)" style="float:right;margin-right:10px;color:orange;"></i></button>
-              <button><i class="fa fa-check" (click)="check(ticket.problem,ticket.email)" style="float:right;margin-right:10px;color:green;"></i></button>
+              <button style="float:right;margin-right:10px;" class="btn btn-default"><i class="fa fa-trash" (click)="deleteTicket(ticket.problem,ticket.email)" style="float:right;margin-right:10px;color:red"></i></button>
+              <button style="float:right;margin-right:10px;" class="btn btn-default"><i class="fa fa-close" (click)="uncheck(ticket.problem,ticket.email)" style="float:right;margin-right:10px;color:orange;"></i></button>
+              <button style="float:right;margin-right:10px;" class="btn btn-default"><i class="fa fa-check" (click)="check(ticket.problem,ticket.email)" style="float:right;margin-right:10px;color:green;"></i></button>
             </h4>
           </div>
           <div id="{{i}}" class="panel-collapse collapse">
             <div class="panel-body">{{ticket.description}}</div>
             <div class="panel-footer">
               <div class="row">
-                  <div class="col-xs-12 col-md-3"><i class="fa fa-user" style="margin:10px;font-size:20px;"></i>{{ticket.name}}</div>
-                  <div class="col-xs-12 col-md-3"><i class="fa fa-envelope" style="margin:10px;font-size:20px;"></i>{{ticket.email}}</div>
-                  <div class="col-xs-12 col-md-3"><i class="fa fa-mobile" style="margin:10px;font-size:20px;"></i>{{ticket.contact}}</div>
-                  <div class="col-xs-12 col-md-3"><i class="fa fa-calendar" style="margin:10px;font-size:20px;"></i>{{ticket.date}}</div>
+                  <div class="col-xs-12 col-md-3"><i class="fa fa-user" style="margin:10px;font-size:20px;color:#1792BA"></i>{{ticket.name}}</div>
+                  <div class="col-xs-12 col-md-3"><i class="fa fa-envelope" style="margin:10px;font-size:20px;color:#1792BA"></i>{{ticket.email}}</div>
+                  <div class="col-xs-12 col-md-3"><i class="fa fa-mobile" style="margin:10px;font-size:20px;color:#1792BA"></i>{{ticket.contact}}</div>
+                  <div class="col-xs-12 col-md-3"><i class="fa fa-calendar" style="margin:10px;font-size:20px;color:#1792BA"></i>{{ticket.date}}</div>
               </div> 
             </div>
           </div>

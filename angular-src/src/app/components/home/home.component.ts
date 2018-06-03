@@ -133,7 +133,7 @@ export class HomeComponent implements OnInit, OnDestroy {
               console.log("1:"+sectionOffset+"2:"+scrollbarLocation);
 
               if(scrollbarLocation >= 250) {
-                $('.navbar').css('background','grey');
+                $('.navbar').css('background','rgba(23,146,186,0.5)');
                 /*$('.navbar-nav > li > a').css('color','white');
                 $('.navbar-nav > li > a').hover(
                   function() {
@@ -144,10 +144,10 @@ export class HomeComponent implements OnInit, OnDestroy {
                   }
             );*/
                 $('.navbar-nav').find('li.active').css('font-size','30px');
-                $('.navbar-header > a').css('color','white');
+                $('.navbar-header > a').css('color','black');
               }
               else {
-                $('.navbar').css('background','white');
+                $('.navbar').css('background','rgba(244, 241, 241, 0.50)');
                 /*$('.navbar-nav > li > a').css('color','black');
                 $('.navbar-nav > li > a').hover(
                   function() {

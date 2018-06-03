@@ -7,7 +7,7 @@
       <div class="panel {{ticket.priority}}">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" href="#{{i}}">{{ticket.problem}}</a>
+              <a data-toggle="collapse" href="#{{i}}">{{ticket.problem}}<i class="fa fa-arrow-down"></i></a>
               <i class="fa fa-trash" (click)="deleteTicket(ticket.problem)" style="float:right;margin-right:5px;color:red"></i>
             </h4>
           </div>
@@ -15,10 +15,10 @@
             <div class="panel-body">{{ticket.description}}</div>
             <div class="panel-footer">
               <div class="row">
-                  <div class="col-xs-12 col-md-3"><i class="fa fa-user" style="margin:5px;font-size:20px;"></i>{{ticket.name}}</div>
-                  <div class="col-xs-12 col-md-3"><i class="fa fa-envelope" style="margin:5px;font-size:20px;"></i>{{ticket.email}}</div>
-                  <div class="col-xs-12 col-md-3"><i class="fa fa-mobile" style="margin:5px;font-size:20px;"></i>{{ticket.contact}}</div>
-                  <div class="col-xs-12 col-md-3"><i class="fa fa-calendar" style="margin:5px;font-size:20px;"></i>{{ticket.date}}</div>
+                  <div class="col-xs-12 col-md-3"><i class="fa fa-user" style="margin:5px;font-size:20px;color:#1792BA"></i>{{ticket.name}}</div>
+                  <div class="col-xs-12 col-md-3"><i class="fa fa-envelope" style="margin:5px;font-size:20px;color:#1792BA"></i>{{ticket.email}}</div>
+                  <div class="col-xs-12 col-md-3"><i class="fa fa-mobile" style="margin:5px;font-size:20px;color:#1792BA"></i>{{ticket.contact}}</div>
+                  <div class="col-xs-12 col-md-3"><i class="fa fa-calendar" style="margin:5px;font-size:20px;color:#1792BA"></i>{{ticket.date}}</div>
               </div> 
             </div>
           </div>
@@ -42,8 +42,10 @@
                   </div>
                     
                   <div class="form-group">
-                    <label>Description<sup>*</sup></label>
-                    <input type="text" class="form-control" [(ngModel)]="description" name="description">
+                    <label>Description<sup>*</sup></label><!--
+                    <input type="text" class="form-control" [(ngModel)]="description" name="description">-->
+                    <textarea class="form-control" [(ngModel)]="description" name="description">
+                    </textarea>
                   </div>
     
                   <div class="form-group">Choose you priority<sup>*</sup><br>
