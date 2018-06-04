@@ -26,6 +26,7 @@
   width:99vw;
   height:100vh;
   display: grid;
+  grid-template-columns: 1fr;
   grid-template-rows: 0.3fr 2fr 0.7fr;
   background:#1792BA;
   -webkit-grid-template-rows: 0.3fr 2fr 0.7fr;
@@ -514,6 +515,34 @@
         height:250px;
       }
     
+    }
+
+
+    @media only screen and (min-width: 1200px) {
+      
+      .wrapper {
+        position:absolute;
+        top:0;
+        left:0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 10vh;
+      }
+
+      .home {
+        width:100vw;
+        height:100vh;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.3fr 2fr 0.7fr;
+        background:#1792BA;
+        -webkit-grid-template-rows: 0.3fr 2fr 0.7fr;
+        -webkit-background:#1792BA;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
     }
 
     
