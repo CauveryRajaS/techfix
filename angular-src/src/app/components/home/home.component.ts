@@ -1,6 +1,8 @@
 import { Component, OnInit,ElementRef,ViewChild,Input,AfterViewInit,OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 import * as $ from 'jquery';
 
 @Component({
@@ -39,7 +41,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   */
   
 
-  constructor(private authService:AuthService) { }
+  constructor(private authService:AuthService,private router:Router,
+    private flashmessage:FlashMessagesService) { }
 
   //@Input() public width = 400;
   //@Input() public height = 400;
@@ -182,9 +185,18 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
+
+  onLogoutClick() {
+    this.authService.logout();
+    this.flashmessage.show('You are logged out',{
+      cssClass:'alert-success',
+      timeout:3000
+    });
+    this.router.navigate(['/login']);
+    return false;
+  }
+
   
-
-
 
   /*
   ngAfterViewInit() {

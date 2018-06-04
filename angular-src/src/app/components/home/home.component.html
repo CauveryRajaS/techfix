@@ -20,14 +20,16 @@
             <a routerLink="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
           <li class="pull-right" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
             <a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
-            <li class="pull-right" *ngIf="authService.loggedIn() && !authService.isAdmin()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/dashboard">Dashboard</a></li>
+            <li class="pull-right" *ngIf="authService.loggedIn()"><a href="#" (click)="onLogoutClick()">Logout</a></li>
             <li class="pull-right" *ngIf="authService.loggedIn() && authService.isAdmin()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/result">Users</a></li>
             <li class="pull-right" *ngIf="authService.loggedIn() && authService.isAdmin()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/report">Tickets</a></li>
-            <li class="pull-right" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/profile">Profile</a></li>
 
+            <li class="pull-right" *ngIf="authService.loggedIn() && !authService.isAdmin()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/dashboard">Dashboard</a></li>
+            <!--
+            <li class="pull-right" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/profile">Profile</a></li>
+            -->
             <li class="pull-right" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/register">Sign Up</a></li>
             <li class="pull-right" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/login">Login</a></li>
-            <li class="pull-right" *ngIf="authService.loggedIn()"><a href="#" (click)="onLogoutClick()">Logout</a></li>
         </ul>
       </div>
     </div>
