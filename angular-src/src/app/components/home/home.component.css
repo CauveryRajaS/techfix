@@ -410,7 +410,7 @@
   }
   
   
-    @media only screen and (max-width: 1200px) { 
+    @media only screen and (max-width: 500px) { 
           
       .home {/*
         background: url(../../../assets/home.jpg) no-repeat center center fixed;*/
@@ -517,7 +517,7 @@
     
     }
 
-
+/*
     @media only screen and (min-width: 1200px) {
       
       .wrapper {
@@ -545,7 +545,7 @@
       }
     }
 
-    
+    */
     /*
 
     @media only screen and (max-width: 600px) { 

@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-
+/*
 button a {
     text-decoration:none;
     color:white;
@@ -58,7 +58,7 @@ div a {
 .nested > div {
     border: 0.2em solid black;
     background:grey;
-}
+}*/
 
 .hide {
     top:0px;
