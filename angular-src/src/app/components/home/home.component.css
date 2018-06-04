@@ -24,10 +24,12 @@
 
 .home {
   width:99vw;
-  height:99vh;
+  height:100vh;
   display: grid;
   grid-template-rows: 0.3fr 2fr 0.7fr;
   background:#1792BA;
+  -webkit-grid-template-rows: 0.3fr 2fr 0.7fr;
+  -webkit-background:#1792BA;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -407,7 +409,7 @@
   }
   
   
-    @media only screen and (min-width: 1200px) { 
+    @media only screen and (max-width: 1200px) { 
           
       .home {/*
         background: url(../../../assets/home.jpg) no-repeat center center fixed;*/
@@ -430,7 +432,7 @@
       .banner2 {
         margin:0 0px;
         width:200px;
-}
+      }
 
       .image {
         width:300px;
