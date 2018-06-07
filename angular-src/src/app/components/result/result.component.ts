@@ -11,10 +11,13 @@ import { ActivatedRoute,Params } from '@angular/router';
 export class ResultComponent implements OnInit {
 
   users:User[];
+  spin=true;
+
   constructor(private authService:AuthService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit() {
     this.authService.getUser('users/user').subscribe(profiles => {
+      this.spin=false;
       this.users=profiles;
     },
     err =>{

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-navbar',
@@ -17,8 +18,13 @@ export class NavbarComponent implements OnInit {
     private flashmessage:FlashMessagesService ) { }
 
   ngOnInit() {
-    
-
+   
+    $(document).ready(function() { 
+      $('.decollapse').on('click', function() {
+        $('.navbar-toggle').click();
+        console.log('clicked.');    
+      });
+    });
   }
 
   onLogoutClick() {

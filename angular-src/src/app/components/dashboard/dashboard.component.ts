@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   priority:string;
   now:Date=new Date();
   currdate=this.now.toString().substring(0,21);
+  spin=true;
 
   constructor(private authService:AuthService,
     private router:Router,
@@ -31,6 +32,7 @@ export class DashboardComponent implements OnInit {
     });
 
     this.authService.getProfile().subscribe(profile => {
+      this.spin=false;
       this.user=profile.user;
       console.log(this.user);
       this.authService.getTicket("users/ticket/"+this.user.email).subscribe(tkt => {

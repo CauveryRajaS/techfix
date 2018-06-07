@@ -1,17 +1,18 @@
 
+
 <div class="custom">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#" style="font-size:30px">Techfix Solutions</a>
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"><!--
+        <a class="navbar-brand" href="#" style="font-size:30px;font-family: Century Gothic, sans-serif;">Techfix Solutions</a><!--
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-          <span class="icon-bar"></span> -->
-        </button>
+          <span class="icon-bar"></span>
+        </button>-->
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" style="font-family: Century Gothic, sans-serif;">
           <li class="active"><a [ngStyle]="marginLeft" href="#home" class="scroll">Home</a></li>
           <li><a href="#showcase1" class="scroll">Services</a></li>
           <li><a href="#host1" class="scroll">About</a></li>
@@ -41,15 +42,15 @@
   <div class="home section" id="home">
   <div></div>
   <div class="banner">
-      <div class="col-xs-12 col-md-4 col-lg-4">
-        <h1 style="padding-top:10px;">Issue Analysis Solution</h1>
+      <div class="col-xs-12 col-md-4 col-lg-4 quotes">
+        <h1 class="bannerHeader">Destined to fix</h1>
         We solve all issues related to mobile phones, desktop and laptop computers.<br><br>
         <a class="homebtn" routerLink="/register">Sign Up</a>
       </div>
       <div class="col-md-1 col-lg-1"></div>
       <div class="col-md-7 col-lg-7">
         <img style="padding-top:10px;" class="banner1" src="../../../assets/banner2.png" alt="img1">
-        <img style="padding-top:10px;" class="banner2" src="../../../assets/banner1.png" alt="img2">
+        <img style="padding-top:5px;" class="banner2" src="../../../assets/banner1.png" alt="img2">
       </div>
   </div>
   <div class="bannerGreet">
@@ -113,7 +114,8 @@
       <section class="section" id="showcase">
         <div class="row try">
           <div class="col-xs-10 col-md-12">
-              <img id="" src="../../../assets/offer2.svg" alt="img" style="box-shadow:0 8px 16px 0 rgba(0,0,0,0.2)">
+              <!--<img id="" src="../../../assets/offer2.svg" alt="img" style="box-shadow:0 8px 16px 0 rgba(0,0,0,0.2)">-->
+              <img id="" src="../../../assets/offer3.jpg" alt="img">
           </div>
         </div>
         <div class="offer1">
@@ -123,7 +125,7 @@
             <div class="middle">
                 <div class="text">
                   <h4>Software Installations & Troubleshooting</h4>
-                  <h5>Any required softwares can be installed and troubled anytime required.</h5>
+                  <h5>Any required softwares can be installed and troubles can be solved anytime required.</h5>
                 </div>
             </div>
           </div>
@@ -134,7 +136,7 @@
             <div class="middle">
                 <div class="text">
                   <h4>End point security</h4>
-                  <h5>Any required softwares can be installed and troubled anytime required.</h5>
+                  <h5>Device security can be monitored when online.</h5>
                 </div>
             </div>
           </div>
@@ -156,7 +158,7 @@
             <div class="middle">
                 <div class="text">
                   <h4>Network Patching & Cabling</h4>
-                  <h5>Any required softwares can be installed and troubled anytime required.</h5>
+                  <h5>Along with this network devices sales and maintenance is done.</h5>
                 </div>
             </div>
           </div>
@@ -167,7 +169,7 @@
             <div class="middle">
                 <div class="text">
                   <h4>Data Centre Maintenance</h4>
-                  <h5>Any required softwares can be installed and troubled anytime required.</h5>
+                  <h5>Facilties for data recovery and backup setup is available.</h5>
                 </div>
             </div>
           </div>
@@ -189,7 +191,7 @@
             <div class="middle">
                 <div class="text">
                   <h4>Laptop Accessories Sales</h4>
-                  <h5>Any required softwares can be installed and troubled anytime required.</h5>
+                  <h5>Accessories of all laptop makers can be bought.</h5>
                 </div>
             </div>
           </div>
@@ -200,7 +202,7 @@
             <div class="middle">
                 <div class="text">
                   <h4>Desktop Accessories Sales</h4>
-                  <h5>Any required softwares can be installed and troubled anytime required.</h5>
+                  <h5>All accessories of desktop computers are sold.</h5>
                 </div>
             </div>
           </div>
@@ -230,12 +232,13 @@
       <section class="section" id="host">
           <div class="row">
             <div class="col-xs-10 col-md-12">
-              <img style="height:150px;width:150px" id="" src="../../../assets/about1.svg" alt="img">
+              <!--<img style="height:150px;width:150px" id="" src="../../../assets/about1.svg" alt="img">-->
+              <img style="height:150px;width:150px" id="" src="../../../assets/about.jpg" alt="img">
             </div>
             <div class="hideImg1 col-xs-12 col-md-5">
               <div class="pic">
-                <img class="hostImg" src="../../../assets/bharath.jpg" alt="img">
               </div>
+              <img class="hostImg" src="../../../assets/bharath.jpg" alt="img">
             </div>
             <div class="motto col-xs-12 col-md-5">
               <h3>"We are pleased to provide you the best service with quality and care."</h3>
@@ -254,12 +257,13 @@
       <i class="fa fa-cog fa-spin fa-3x fa-fw" style="color:skyblue;position:absolute;top:-25px;left:-61px;"></i>
       -->
 
-      
+      <!--
       <div id="contact">
           <img id="img2" src="../../../assets/img2.jpg" alt="img">
       </div>
+    -->
 
-      <div class="row section">
+      <div id="contact">
         <section>
         </section>
       </div>
@@ -295,12 +299,12 @@
             <h2 class="row">98775 87743</h2>
           </div>
         </div>
-
+        <!--
         <div class="row row2">
           <h4>
             Are you in need of cool websites, visit VDesign.com .
           </h4>
-        </div>
+        </div>-->
 
         <div class="row row2">
           <h4>

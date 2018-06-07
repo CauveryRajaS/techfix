@@ -1,31 +1,29 @@
 
-<nav class="navbar" style="background:rgba(23, 146, 186, 0.50)">
-    <div class="container" *ngIf="!authService.isTest() || !authService.isEvaluate()">
+<nav class="navbar">
+    <div class="container">
         <div class="navbar-header">
            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span> 
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
            </button>
             <a class="navbar-brand" href="#">Techfix Solutions</a>
         </div>
         
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-left">
-              <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Home</a></li>
+              <li class="decollapse" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Home</a></li>
               <!--<li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/login">தமிழ்</a></li>
               <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/profile">Learn</a></li>-->
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li *ngIf="authService.loggedIn() && !authService.isAdmin()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/dashboard">Dashboard</a></li>
-                <li *ngIf="authService.loggedIn() && authService.isAdmin()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/result">Users</a></li>
-                <li *ngIf="authService.loggedIn() && authService.isAdmin()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/report">Tickets</a></li>
-                <li *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/profile">Profile</a></li>
+                <li class="decollapse" *ngIf="authService.loggedIn() && !authService.isAdmin()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/dashboard">Dashboard</a></li>
+                <li class="decollapse" *ngIf="authService.loggedIn() && authService.isAdmin()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/result">Users</a></li>
+                <li class="decollapse" *ngIf="authService.loggedIn() && authService.isAdmin()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/report">Tickets</a></li>
+                <li class="decollapse" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/profile">Profile</a></li>
 
-                <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/login">Login</a></li>
-                <li *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/register">Register</a></li>
-                <li *ngIf="authService.loggedIn()"><a href="#" (click)="onLogoutClick()">Logout</a></li>
+                <li class="decollapse" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/login">Login</a></li>
+                <li class="decollapse" *ngIf="!authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/register">Register</a></li>
+                <li class="decollapse" *ngIf="authService.loggedIn()"><a href="#" (click)="onLogoutClick()">Logout</a></li>
             </ul>
         </div>
         

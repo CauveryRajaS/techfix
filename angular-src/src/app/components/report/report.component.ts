@@ -10,12 +10,14 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class ReportComponent implements OnInit {
 
   tickets:Ticket[];
+  spin=true;
 
   constructor(private authService:AuthService,
     private flashmessage:FlashMessagesService) { }
 
   ngOnInit() {
     this.authService.getTicket("users/ticket").subscribe(tkt => {
+    this.spin=false;
     this.tickets=tkt;
     console.log(this.tickets);
   },
@@ -26,6 +28,7 @@ export class ReportComponent implements OnInit {
   }
  
   deleteTicket(pro:string,email:string) {
+    this.spin=true;
     this.authService.deleteTicket("users/ticket/"+email+"/"+pro).subscribe(data => {
       if(data.success) {
         console.log(data);
@@ -36,6 +39,7 @@ export class ReportComponent implements OnInit {
       }
     });
     this.authService.getTicket("users/ticket").subscribe(tkt => {
+      this.spin=false;
       this.tickets=tkt;
       console.log(this.tickets);
     },
@@ -51,7 +55,7 @@ export class ReportComponent implements OnInit {
     }
   
     console.log(ticket);
-
+    this.spin=true;
     this.authService.updateTicket("users/ticket/"+email+"/"+pro,ticket).subscribe(data => {
       if(data.success) {
         console.log(data);
@@ -59,6 +63,7 @@ export class ReportComponent implements OnInit {
     });
 
     this.authService.getTicket("users/ticket").subscribe(tkt => {
+      this.spin=false;
       this.tickets=tkt;
       console.log(this.tickets);
     },
@@ -75,7 +80,7 @@ export class ReportComponent implements OnInit {
     }
   
     console.log(ticket);
-
+    this.spin=true;
     this.authService.updateTicket("users/ticket/"+email+"/"+pro,ticket).subscribe(data => {
       if(data.success) {
         console.log(data);
@@ -83,6 +88,7 @@ export class ReportComponent implements OnInit {
     });
 
     this.authService.getTicket("users/ticket").subscribe(tkt => {
+      this.spin=false;
       this.tickets=tkt;
       console.log(this.tickets);
     },
