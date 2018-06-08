@@ -35,41 +35,88 @@ export class RegisterComponent implements OnInit {
   onRegisterSubmit() {
     this.spin=true;
     console.log(this.name);
-    const user = {
-      name:this.name,
-      contact:this.contact,
-      email:this.email,
-      password:this.password,
-      copy:this.password,
-      question:this.question,
-      answer:this.answer.toLowerCase()
-    }
-    console.log(user);
-
-    //Require fields
-    if(!this.validateService.validateRegister(user)) {
-      this.flashMessage.show('Please fill in all fields',{cssClass:'alert-danger',timeout:3000});
-      return false;
-    }
-
-    //Require valid Email
-    if(!this.validateService.validateEmail(user.email)) {
-      this.flashMessage.show('Please enter valid email',{cssClass:'alert-danger',timeout:3000});
-      return false;
-    }    
-
-    //Register user
-    this.authService.registerUser(user).subscribe(data => {
-      console.log('registering..');
-      if(data.success) {
-        this.flashMessage.show('You are now registered successfully and can log in',{cssClass:'alert-success',timeout:3000});
-        this.router.navigate(['/login']);
+    if(this.answer == undefined) {
+      const user = {
+        name:this.name,
+        contact:this.contact,
+        email:this.email,
+        password:this.password,
+        copy:this.password,
+        question:this.question,
+        answer:this.answer
       }
-      else {
-        this.flashMessage.show('Log in unsuccessful , please try again',{cssClass:'alert-danger',timeout:3000});
-        this.router.navigate(['/register']);
-      }
-    });
 
-  }
+
+      console.log(user);
+      
+          //Require fields
+          if(!this.validateService.validateRegister(user)) {
+            this.spin=false;
+            this.flashMessage.show('Please fill in all fields',{cssClass:'alert-danger',timeout:3000});
+            return false;
+          }
+      
+          //Require valid Email
+          if(!this.validateService.validateEmail(user.email)) {
+            this.spin=false;
+            this.flashMessage.show('Please enter valid email',{cssClass:'alert-danger',timeout:3000});
+            return false;
+          }    
+      
+          //Register user
+          this.authService.registerUser(user).subscribe(data => {
+            console.log('registering..');
+            if(data.success) {
+              this.flashMessage.show('You are now registered successfully and can log in',{cssClass:'alert-success',timeout:3000});
+              this.router.navigate(['/login']);
+            }
+            else {
+              this.flashMessage.show('Log in unsuccessful , please try again',{cssClass:'alert-danger',timeout:3000});
+              this.router.navigate(['/register']);
+            }
+          });
+    }
+      else  {
+        const user = {
+          name:this.name,
+          contact:this.contact,
+          email:this.email,
+          password:this.password,
+          copy:this.password,
+          question:this.question,
+          answer:this.answer.toLowerCase()
+        }
+
+
+      console.log(user);
+      
+          //Require fields
+          if(!this.validateService.validateRegister(user)) {
+            this.flashMessage.show('Please fill in all fields',{cssClass:'alert-danger',timeout:3000});
+            return false;
+          }
+      
+          //Require valid Email
+          if(!this.validateService.validateEmail(user.email)) {
+            this.flashMessage.show('Please enter valid email',{cssClass:'alert-danger',timeout:3000});
+            return false;
+          }    
+      
+          //Register user
+          this.authService.registerUser(user).subscribe(data => {
+            console.log('registering..');
+            if(data.success) {
+              this.flashMessage.show('You are now registered successfully and can log in',{cssClass:'alert-success',timeout:3000});
+              this.router.navigate(['/login']);
+            }
+            else {
+              this.flashMessage.show('Log in unsuccessful , please try again',{cssClass:'alert-danger',timeout:3000});
+              this.router.navigate(['/register']);
+            }
+          });
+      }
+
+    }
+
 }
+

@@ -210,7 +210,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>\n  Welcome !!!\n</h2>\n\n<div *ngIf=\"tickets\">\n  <div *ngFor=\"let ticket of tickets;let i=index;\">\n      <div class=\"panel {{ticket.priority}}\">\n          <div class=\"panel-heading\">\n            <h4 class=\"panel-title\">\n              <a data-toggle=\"collapse\" href=\"#{{i}}\">{{ticket.problem}}<i class=\"fa fa-arrow-down\"></i></a>\n              <i class=\"fa fa-trash\" (click)=\"deleteTicket(ticket.problem)\" style=\"float:right;margin-right:5px;color:red\"></i>\n            </h4>\n          </div>\n          <div id=\"{{i}}\" class=\"panel-collapse collapse\">\n            <div class=\"panel-body\">{{ticket.description}}</div>\n            <div class=\"panel-footer\">\n              <div class=\"row\">\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-user\" style=\"margin:5px;font-size:20px;color:#1792BA\"></i>{{ticket.name}}</div>\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-envelope\" style=\"margin:5px;font-size:20px;color:#1792BA\"></i>{{ticket.email}}</div>\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-mobile\" style=\"margin:5px;font-size:20px;color:#1792BA\"></i>{{ticket.contact}}</div>\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-calendar\" style=\"margin:5px;font-size:20px;color:#1792BA\"></i>{{ticket.date}}</div>\n              </div> \n            </div>\n          </div>\n        </div>\n  </div>\n</div>\n\n\n      <div class=\"panel panel-info\">\n        <div class=\"panel-heading\">\n          <h4 class=\"panel-title\">\n            <a data-toggle=\"collapse\" href=\"#collapse2\">Create new ticket</a>\n          </h4>\n        </div>\n        <div id=\"collapse2\" class=\"panel-collapse collapse\">\n          <div class=\"panel-body\">\n              <form (submit)=\"onSubmit()\">\n                  <div class=\"form-group\">\n                    <label>Problem<sup>*</sup></label>\n                    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"problem\" name=\"problem\">\n                  </div>\n                    \n                  <div class=\"form-group\">\n                    <label>Description<sup>*</sup></label><!--\n                    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"description\" name=\"description\">-->\n                    <textarea class=\"form-control\" [(ngModel)]=\"description\" name=\"description\">\n                    </textarea>\n                  </div>\n    \n                  <div class=\"form-group\">Choose you priority<sup>*</sup><br>\n                    <label>\n                    <input type=\"radio\" name=\"level\" (click)=\"low()\">Low</label>\n                    <label>\n                    <input type=\"radio\" name=\"level\" (click)=\"high()\">High</label>\n                  </div>\n                  <input type=\"submit\" class=\"btn btn-success\" value=\"Submit\">\n              </form>\n          </div>\n        </div>\n      </div>\n\n\n\n<div *ngIf=\"spin\" id=\"container\">\n  <div class=\"loadingbar\"></div>\n</div>\n\n<!--\n<div class=\"col-lg-12 col-xs-12\" style=\"margin-right:20px;text-align:center\"\n    *ngIf=test [routerLinkActive]=\"['active']\" \n    [routerLinkActiveOptions]=\"{exact:true}\"><a>Test Status</a><br><br>\n    <button  class=\"btn btn-success\" *ngIf=show1 (click)=\"testOn()\">Activate</button>\n    <button  class=\"btn btn-success\" *ngIf=show3 (click)=\"testOff()\">Stop</button>\n    <button class=\"btn btn-danger\" *ngIf=show2 (click)=\"delete()\">Delete</button>\n</div>\n\n\n<div class=\"well col-lg-5 col-xs-12\" style=\"margin-right:20px;text-align:center\"\n    *ngIf=\"authService.isStudent()\" [routerLinkActive]=\"['active']\" \n    [routerLinkActiveOptions]=\"{exact:true}\">Custom test<br><br>\n    <input type=\"text\" [(ngModel)]=\"id\" name=\"id\" placeholder=\"Enter your mentor id\">\n    <button  class=\"btn btn-success\" (click)=\"search()\">Search</button><br><br>\n    <button  class=\"btn btn-success\" (click)=\"attempt()\" *ngIf=active>Attempt test</button><br><br>\n    <div *ngIf=inactive>No test available</div>\n    <div *ngIf=noAttempt>No more attempts are allowed</div>\n</div>\n\n<div class=\"well col-lg-5 col-xs-12\" style=\"margin-right:20px;text-align:center\"\n     *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" \n     [routerLinkActiveOptions]=\"{exact:true}\"><a routerLink=\"/lgmenu\">Logic</a></div>\n\n<div class=\"well col-lg-5 col-xs-12\" style=\"margin-right:20px;text-align:center\" \n     *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" \n     [routerLinkActiveOptions]=\"{exact:true}\"><a routerLink=\"/apmenu\">General Aptitude</a></div>\n\n<div class=\"well col-lg-5 col-xs-12\" style=\"margin-right:20px;text-align:center\"\n      *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" \n      [routerLinkActiveOptions]=\"{exact:true}\"><a routerLink=\"/tapmenu\">Technical Aptitude</a></div>\n    \n<div class=\"well col-lg-5 col-xs-12\" style=\"margin-right:20px;text-align:center\" \n      *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" \n      [routerLinkActiveOptions]=\"{exact:true}\"><a routerLink=\"/essay\">Essay writing</a></div>\n</div>\n\n<div class=\"backdrop\" [ngStyle]=\"{'display':display}\"></div>\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display':display}\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h2 class=\"modal-title\">Your feedback</h2>\n      </div>\n      <div class=\"modal-body\">\n        <div [ngStyle]=\"{'display':showin}\">\n          <h3>Your feedback is valuable to us and will be posted in the home page</h3>\n          <form (submit)=\"save(new.value)\">\n              <label>Feedback<sup>*</sup></label>\n              <input type=\"text\" #new class=\"form-control\"/>\n              <h5 style=\"color:red\" *ngIf=\"msg\">Your feedback is required<sup>*</sup></h5><br>\n              <!--\n              <input class=\"btn btn-success\" type=\"submit\" style=\"float:right;margin-right:20px;\" value=\"Save\"/>\n              <span class=\"modal-footer\">\n              <input class=\"btn btn-success\" type=\"submit\" value=\"Save\"/>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n\n  <div class=\"backdrop\" [ngStyle]=\"{'display':display2}\"></div>\n  <div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display':display2}\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h2 class=\"modal-title\">Passage writing</h2>\n        </div>\n        <div class=\"modal-body\">\n          <div [ngStyle]=\"{'display':showin2}\">\n            <h3>{{essayTitle}}</h3>\n            <form (submit)=\"save2(text.value)\">\n                <label>Passage<sup>*</sup></label>\n                <textarea #text class=\"form-control\" rows=\"10\" name=\"quest\">\n                  </textarea>\n                <h5 style=\"color:red\" *ngIf=\"msg2\">Your passage is required with minimum 50 characters<sup>*</sup></h5><br>\n                <!--\n                <input class=\"btn btn-success\" type=\"submit\" style=\"float:right;margin-right:20px;\" value=\"Save\"/>\n                <span class=\"modal-footer\">\n                <input class=\"btn btn-success\" type=\"submit\" value=\"Save\"/>\n            </form>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n-->"
+module.exports = "<h2>\n  Welcome !!!\n</h2>\n\n<div *ngIf=\"tickets\">\n  <div *ngFor=\"let ticket of tickets;let i=index;\">\n      <div class=\"panel {{ticket.priority}}\">\n          <div class=\"panel-heading\">\n            <h4 class=\"panel-title\">\n              <a data-toggle=\"collapse\" href=\"#{{i}}\">{{ticket.problem}}<i class=\"fa fa-angle-double-down\"></i></a>\n              <i class=\"fa fa-trash\" (click)=\"deleteTicket(ticket.problem)\" style=\"float:right;margin-right:5px;color:red\"></i>\n            </h4>\n          </div>\n          <div id=\"{{i}}\" class=\"panel-collapse collapse\">\n            <div class=\"panel-body\">{{ticket.description}}</div>\n            <div class=\"panel-footer\">\n              <div class=\"row\">\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-user\" style=\"margin:5px;font-size:20px;color:#1792BA\"></i>{{ticket.name}}</div>\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-envelope\" style=\"margin:5px;font-size:20px;color:#1792BA\"></i>{{ticket.email}}</div>\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-mobile\" style=\"margin:5px;font-size:20px;color:#1792BA\"></i>{{ticket.contact}}</div>\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-calendar\" style=\"margin:5px;font-size:20px;color:#1792BA\"></i>{{ticket.date}}</div>\n              </div> \n            </div>\n          </div>\n        </div>\n  </div>\n</div>\n\n\n      <div class=\"panel panel-info\">\n        <div class=\"panel-heading\">\n          <h4 class=\"panel-title\">\n            <a data-toggle=\"collapse\" href=\"#collapse2\">Create new ticket</a>\n          </h4>\n        </div>\n        <div id=\"collapse2\" class=\"panel-collapse collapse\">\n          <div class=\"panel-body\">\n              <form (submit)=\"onSubmit()\">\n                  <div class=\"form-group\">\n                    <label>Problem<sup>*</sup></label>\n                    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"problem\" name=\"problem\">\n                  </div>\n                    \n                  <div class=\"form-group\">\n                    <label>Description<sup>*</sup></label><!--\n                    <input type=\"text\" class=\"form-control\" [(ngModel)]=\"description\" name=\"description\">-->\n                    <textarea class=\"form-control\" [(ngModel)]=\"description\" name=\"description\">\n                    </textarea>\n                  </div>\n    \n                  <div class=\"form-group\">Choose you priority<sup>*</sup><br>\n                    <label>\n                    <input type=\"radio\" name=\"level\" (click)=\"low()\">Low</label>\n                    <label>\n                    <input type=\"radio\" name=\"level\" (click)=\"high()\">High</label>\n                  </div>\n                  <input type=\"submit\" class=\"btn btn-success\" value=\"Submit\">\n              </form>\n          </div>\n        </div>\n      </div>\n\n\n\n<div *ngIf=\"spin\" id=\"container\">\n  <div class=\"loadingbar\"></div>\n</div>\n\n<!--\n<div class=\"col-lg-12 col-xs-12\" style=\"margin-right:20px;text-align:center\"\n    *ngIf=test [routerLinkActive]=\"['active']\" \n    [routerLinkActiveOptions]=\"{exact:true}\"><a>Test Status</a><br><br>\n    <button  class=\"btn btn-success\" *ngIf=show1 (click)=\"testOn()\">Activate</button>\n    <button  class=\"btn btn-success\" *ngIf=show3 (click)=\"testOff()\">Stop</button>\n    <button class=\"btn btn-danger\" *ngIf=show2 (click)=\"delete()\">Delete</button>\n</div>\n\n\n<div class=\"well col-lg-5 col-xs-12\" style=\"margin-right:20px;text-align:center\"\n    *ngIf=\"authService.isStudent()\" [routerLinkActive]=\"['active']\" \n    [routerLinkActiveOptions]=\"{exact:true}\">Custom test<br><br>\n    <input type=\"text\" [(ngModel)]=\"id\" name=\"id\" placeholder=\"Enter your mentor id\">\n    <button  class=\"btn btn-success\" (click)=\"search()\">Search</button><br><br>\n    <button  class=\"btn btn-success\" (click)=\"attempt()\" *ngIf=active>Attempt test</button><br><br>\n    <div *ngIf=inactive>No test available</div>\n    <div *ngIf=noAttempt>No more attempts are allowed</div>\n</div>\n\n<div class=\"well col-lg-5 col-xs-12\" style=\"margin-right:20px;text-align:center\"\n     *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" \n     [routerLinkActiveOptions]=\"{exact:true}\"><a routerLink=\"/lgmenu\">Logic</a></div>\n\n<div class=\"well col-lg-5 col-xs-12\" style=\"margin-right:20px;text-align:center\" \n     *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" \n     [routerLinkActiveOptions]=\"{exact:true}\"><a routerLink=\"/apmenu\">General Aptitude</a></div>\n\n<div class=\"well col-lg-5 col-xs-12\" style=\"margin-right:20px;text-align:center\"\n      *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" \n      [routerLinkActiveOptions]=\"{exact:true}\"><a routerLink=\"/tapmenu\">Technical Aptitude</a></div>\n    \n<div class=\"well col-lg-5 col-xs-12\" style=\"margin-right:20px;text-align:center\" \n      *ngIf=\"authService.loggedIn()\" [routerLinkActive]=\"['active']\" \n      [routerLinkActiveOptions]=\"{exact:true}\"><a routerLink=\"/essay\">Essay writing</a></div>\n</div>\n\n<div class=\"backdrop\" [ngStyle]=\"{'display':display}\"></div>\n<div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display':display}\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h2 class=\"modal-title\">Your feedback</h2>\n      </div>\n      <div class=\"modal-body\">\n        <div [ngStyle]=\"{'display':showin}\">\n          <h3>Your feedback is valuable to us and will be posted in the home page</h3>\n          <form (submit)=\"save(new.value)\">\n              <label>Feedback<sup>*</sup></label>\n              <input type=\"text\" #new class=\"form-control\"/>\n              <h5 style=\"color:red\" *ngIf=\"msg\">Your feedback is required<sup>*</sup></h5><br>\n              <!--\n              <input class=\"btn btn-success\" type=\"submit\" style=\"float:right;margin-right:20px;\" value=\"Save\"/>\n              <span class=\"modal-footer\">\n              <input class=\"btn btn-success\" type=\"submit\" value=\"Save\"/>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n\n  <div class=\"backdrop\" [ngStyle]=\"{'display':display2}\"></div>\n  <div class=\"modal\" tabindex=\"-1\" role=\"dialog\" [ngStyle]=\"{'display':display2}\">\n    <div class=\"modal-dialog\" role=\"document\">\n      <div class=\"modal-content\">\n        <div class=\"modal-header\">\n          <h2 class=\"modal-title\">Passage writing</h2>\n        </div>\n        <div class=\"modal-body\">\n          <div [ngStyle]=\"{'display':showin2}\">\n            <h3>{{essayTitle}}</h3>\n            <form (submit)=\"save2(text.value)\">\n                <label>Passage<sup>*</sup></label>\n                <textarea #text class=\"form-control\" rows=\"10\" name=\"quest\">\n                  </textarea>\n                <h5 style=\"color:red\" *ngIf=\"msg2\">Your passage is required with minimum 50 characters<sup>*</sup></h5><br>\n                <!--\n                <input class=\"btn btn-success\" type=\"submit\" style=\"float:right;margin-right:20px;\" value=\"Save\"/>\n                <span class=\"modal-footer\">\n                <input class=\"btn btn-success\" type=\"submit\" value=\"Save\"/>\n            </form>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n-->"
 
 /***/ }),
 
@@ -627,9 +627,11 @@ var LoginComponent = (function () {
         console.log(this.email);
         if (this.email !== undefined) {
             this.wrong = false;
+            this.spin = true;
             console.log('forgot...');
             this.authService.getUser("users/user/" + this.email).subscribe(function (user) {
                 _this.user = user;
+                _this.spin = false;
                 console.log(_this.user);
                 if (_this.user === null) {
                     _this.flashmessage.show('user not found', {
@@ -1006,38 +1008,76 @@ var RegisterComponent = (function () {
         var _this = this;
         this.spin = true;
         console.log(this.name);
-        var user = {
-            name: this.name,
-            contact: this.contact,
-            email: this.email,
-            password: this.password,
-            copy: this.password,
-            question: this.question,
-            answer: this.answer.toLowerCase()
-        };
-        console.log(user);
-        //Require fields
-        if (!this.validateService.validateRegister(user)) {
-            this.flashMessage.show('Please fill in all fields', { cssClass: 'alert-danger', timeout: 3000 });
-            return false;
-        }
-        //Require valid Email
-        if (!this.validateService.validateEmail(user.email)) {
-            this.flashMessage.show('Please enter valid email', { cssClass: 'alert-danger', timeout: 3000 });
-            return false;
-        }
-        //Register user
-        this.authService.registerUser(user).subscribe(function (data) {
-            console.log('registering..');
-            if (data.success) {
-                _this.flashMessage.show('You are now registered successfully and can log in', { cssClass: 'alert-success', timeout: 3000 });
-                _this.router.navigate(['/login']);
+        if (this.answer == undefined) {
+            var user = {
+                name: this.name,
+                contact: this.contact,
+                email: this.email,
+                password: this.password,
+                copy: this.password,
+                question: this.question,
+                answer: this.answer
+            };
+            console.log(user);
+            //Require fields
+            if (!this.validateService.validateRegister(user)) {
+                this.spin = false;
+                this.flashMessage.show('Please fill in all fields', { cssClass: 'alert-danger', timeout: 3000 });
+                return false;
             }
-            else {
-                _this.flashMessage.show('Log in unsuccessful , please try again', { cssClass: 'alert-danger', timeout: 3000 });
-                _this.router.navigate(['/register']);
+            //Require valid Email
+            if (!this.validateService.validateEmail(user.email)) {
+                this.spin = false;
+                this.flashMessage.show('Please enter valid email', { cssClass: 'alert-danger', timeout: 3000 });
+                return false;
             }
-        });
+            //Register user
+            this.authService.registerUser(user).subscribe(function (data) {
+                console.log('registering..');
+                if (data.success) {
+                    _this.flashMessage.show('You are now registered successfully and can log in', { cssClass: 'alert-success', timeout: 3000 });
+                    _this.router.navigate(['/login']);
+                }
+                else {
+                    _this.flashMessage.show('Log in unsuccessful , please try again', { cssClass: 'alert-danger', timeout: 3000 });
+                    _this.router.navigate(['/register']);
+                }
+            });
+        }
+        else {
+            var user = {
+                name: this.name,
+                contact: this.contact,
+                email: this.email,
+                password: this.password,
+                copy: this.password,
+                question: this.question,
+                answer: this.answer.toLowerCase()
+            };
+            console.log(user);
+            //Require fields
+            if (!this.validateService.validateRegister(user)) {
+                this.flashMessage.show('Please fill in all fields', { cssClass: 'alert-danger', timeout: 3000 });
+                return false;
+            }
+            //Require valid Email
+            if (!this.validateService.validateEmail(user.email)) {
+                this.flashMessage.show('Please enter valid email', { cssClass: 'alert-danger', timeout: 3000 });
+                return false;
+            }
+            //Register user
+            this.authService.registerUser(user).subscribe(function (data) {
+                console.log('registering..');
+                if (data.success) {
+                    _this.flashMessage.show('You are now registered successfully and can log in', { cssClass: 'alert-success', timeout: 3000 });
+                    _this.router.navigate(['/login']);
+                }
+                else {
+                    _this.flashMessage.show('Log in unsuccessful , please try again', { cssClass: 'alert-danger', timeout: 3000 });
+                    _this.router.navigate(['/register']);
+                }
+            });
+        }
     };
     return RegisterComponent;
 }());
@@ -1076,7 +1116,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/report/report.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"tickets\">\n  <div *ngFor=\"let ticket of tickets;let i=index;\">\n      <div class=\"panel {{ticket.priority}}\">\n          <div class=\"panel-heading\">\n            <h4 class=\"panel-title\">\n              <a data-toggle=\"collapse\" href=\"#{{i}}\">{{ticket.problem}}</a>\n              <button style=\"float:right;margin-right:10px;\" class=\"btn btn-default\"><i class=\"fa fa-trash\" (click)=\"deleteTicket(ticket.problem,ticket.email)\" style=\"float:right;margin-right:10px;color:red\"></i></button>\n              <button style=\"float:right;margin-right:10px;\" class=\"btn btn-default\"><i class=\"fa fa-close\" (click)=\"uncheck(ticket.problem,ticket.email)\" style=\"float:right;margin-right:10px;color:orange;\"></i></button>\n              <button style=\"float:right;margin-right:10px;\" class=\"btn btn-default\"><i class=\"fa fa-check\" (click)=\"check(ticket.problem,ticket.email)\" style=\"float:right;margin-right:10px;color:green;\"></i></button>\n            </h4>\n          </div>\n          <div id=\"{{i}}\" class=\"panel-collapse collapse\">\n            <div class=\"panel-body\">{{ticket.description}}</div>\n            <div class=\"panel-footer\">\n              <div class=\"row\">\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-user\" style=\"margin:10px;font-size:20px;color:#1792BA\"></i>{{ticket.name}}</div>\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-envelope\" style=\"margin:10px;font-size:20px;color:#1792BA\"></i>{{ticket.email}}</div>\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-mobile\" style=\"margin:10px;font-size:20px;color:#1792BA\"></i>{{ticket.contact}}</div>\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-calendar\" style=\"margin:10px;font-size:20px;color:#1792BA\"></i>{{ticket.date}}</div>\n              </div> \n            </div>\n          </div>\n        </div>\n  </div>\n</div>\n\n\n<div *ngIf=\"spin\" id=\"container\">\n  <div class=\"loadingbar\"></div>\n</div>\n"
+module.exports = "<div *ngIf=\"tickets\">\n  <div *ngFor=\"let ticket of tickets;let i=index;\">\n      <div class=\"panel {{ticket.priority}}\">\n          <div class=\"panel-heading\">\n            <h4 class=\"panel-title\">\n              <a data-toggle=\"collapse\" href=\"#{{i}}\">{{ticket.problem}}<i class=\"fa fa-angle-double-down\"></i></a>\n              <button style=\"float:right;margin-right:10px;\" class=\"btn btn-default\"><i class=\"fa fa-trash\" (click)=\"deleteTicket(ticket.problem,ticket.email)\" style=\"float:right;margin-right:10px;color:red\"></i></button>\n              <button style=\"float:right;margin-right:10px;\" class=\"btn btn-default\"><i class=\"fa fa-close\" (click)=\"uncheck(ticket.problem,ticket.email)\" style=\"float:right;margin-right:10px;color:orange;\"></i></button>\n              <button style=\"float:right;margin-right:10px;\" class=\"btn btn-default\"><i class=\"fa fa-check\" (click)=\"check(ticket.problem,ticket.email)\" style=\"float:right;margin-right:10px;color:green;\"></i></button>\n            </h4>\n          </div>\n          <div id=\"{{i}}\" class=\"panel-collapse collapse\">\n            <div class=\"panel-body\">{{ticket.description}}</div>\n            <div class=\"panel-footer\">\n              <div class=\"row\">\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-user\" style=\"margin:10px;font-size:20px;color:#1792BA\"></i>{{ticket.name}}</div>\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-envelope\" style=\"margin:10px;font-size:20px;color:#1792BA\"></i>{{ticket.email}}</div>\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-mobile\" style=\"margin:10px;font-size:20px;color:#1792BA\"></i>{{ticket.contact}}</div>\n                  <div class=\"col-xs-12 col-md-3\"><i class=\"fa fa-calendar\" style=\"margin:10px;font-size:20px;color:#1792BA\"></i>{{ticket.date}}</div>\n              </div> \n            </div>\n          </div>\n        </div>\n  </div>\n</div>\n\n\n<div *ngIf=\"spin\" id=\"container\">\n  <div class=\"loadingbar\"></div>\n</div>\n"
 
 /***/ }),
 
@@ -1218,7 +1258,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/result/result.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"users\">\n  <div *ngFor=\"let user of users;let i=index;\">\n      <div class=\"panel panel-default\">\n          <div class=\"panel-heading\">\n            <h4 class=\"panel-title\">\n              <a data-toggle=\"collapse\" href=\"#{{i}}\">{{user.name}}</a>\n            </h4>\n          </div>\n          <div id=\"{{i}}\" class=\"panel-collapse collapse\">\n            <div class=\"panel-body\">\n              <div class=\"row\">\n                <div class=\"col-xs-12 col-md-6\"><i class=\"fa fa-envelope\" style=\"margin:5px;font-size:20px;color:#1792BA\"></i>{{user.email}}</div>\n                <div class=\"col-xs-12 col-md-6\"><i class=\"fa fa-mobile\" style=\"margin:5px;font-size:20px;color:#1792BA\"></i>{{user.contact}}</div>\n              </div>\n            </div>\n          </div>\n        </div>\n  </div>\n</div>\n\n\n<div *ngIf=\"spin\" id=\"container\">\n  <div class=\"loadingbar\"></div>\n</div>\n          "
+module.exports = "<div *ngIf=\"users\">\n  <div *ngFor=\"let user of users;let i=index;\">\n      <div class=\"panel panel-default\">\n          <div class=\"panel-heading\">\n            <h4 class=\"panel-title\">\n              <a data-toggle=\"collapse\" href=\"#{{i}}\">{{user.name}}<i class=\"fa fa-angle-double-down\"></i></a>\n            </h4>\n          </div>\n          <div id=\"{{i}}\" class=\"panel-collapse collapse\">\n            <div class=\"panel-body\">\n              <div class=\"row\">\n                <div class=\"col-xs-12 col-md-6\"><i class=\"fa fa-envelope\" style=\"margin:5px;font-size:20px;color:#1792BA\"></i>{{user.email}}</div>\n                <div class=\"col-xs-12 col-md-6\"><i class=\"fa fa-mobile\" style=\"margin:5px;font-size:20px;color:#1792BA\"></i>{{user.contact}}</div>\n              </div>\n            </div>\n          </div>\n        </div>\n  </div>\n</div>\n\n\n<div *ngIf=\"spin\" id=\"container\">\n  <div class=\"loadingbar\"></div>\n</div>\n          "
 
 /***/ }),
 

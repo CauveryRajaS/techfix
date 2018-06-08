@@ -27,8 +27,8 @@ body {
     top: 0;
     bottom: 0;
     width: 0%;
-    border-radius: 5px;
-    background: linear-gradient(#F9AF26,#1792BA);
+    border-radius: 10px;
+    background: linear-gradient(to right,yellow,#F9AF26);
 }
 
 .loadingbar:before {
@@ -117,12 +117,14 @@ html, body {
       position: absolute;
       top: 50%;
       left: 50%;
+      transform: translate(-40%,-40%);
+      padding:5px;
   }
   .loading div {
       display: inline-block;
       width: 10px;
       height: 50px;
-      border-radius: 4px;
+      border-radius: 1px;
       animation: loading 1.5s ease-in-out infinite;
       background-color: #345f73;
   }

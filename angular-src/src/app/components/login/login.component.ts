@@ -32,9 +32,11 @@ export class LoginComponent implements OnInit {
     console.log(this.email);
     if(this.email!==undefined) {
       this.wrong=false;
+      this.spin=true;
       console.log('forgot...');
       this.authService.getUser("users/user/"+this.email).subscribe(user => {
         this.user=user;
+        this.spin=false;
         console.log(this.user);
         if(this.user===null) {
           this.flashmessage.show('user not found', {
