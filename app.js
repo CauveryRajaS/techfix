@@ -49,8 +49,6 @@ require('./config/passport')(passport);
 //app.use('/home',home);
 //app.use('/dashboard',dash);
 app.use('/users',users);
-app.post('/confirmation', userController.confirmationPost);
-app.post('/resend', userController.resendTokenPost);
 //app.use('/ticket',ticket);
 
 //Index Route
