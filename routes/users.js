@@ -68,12 +68,14 @@ router.post('/register', ( req, res, next) => {
                 var token = new Token({ _userId: user._id, token: crypto.randomBytes(16).toString('hex') });
                 // Save the verification token
                 token.save(function (err) {
-                    if (err) { return res.status(500).send({ msg: err.message }); }
+                    //if (err) { return res.status(500).send({ msg: err.message }); }
+                    if (err) { return res.json({ msg: err.message,error:err,show:'error1' }); }
                     var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: process.env.SENDGRID_USERNAME, pass: process.env.SENDGRID_PASSWORD } });
                     //var mailOptions = { from: 'no-reply@yourwebapplication.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
                     var mailOptions = { from: 'no-reply@techfixsolutions.herokuapp.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
                     transporter.sendMail(mailOptions, function (err) {
-                        if (err) { return res.status(500).send({ msg: err.message }); }
+                        //if (err) { return res.status(500).send({ msg: err.message }); }
+                    if (err) { return res.json({ msg: err.message,error:err,show:'error2' }); }
                         res.status(200).send('A verification email has been sent to ' + user.email + '.');
                     });
                 });
