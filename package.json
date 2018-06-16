@@ -5,16 +5,18 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node app"
+    "start": "node app"
   },
   "dependencies": {
     "bcryptjs": "*",
     "body-parser": "*",
     "cors": "*",
+    "crypto": "^1.0.1",
     "express": "*",
     "jsonwebtoken": "*",
     "mongoose": "*",
     "multer": "*",
+    "nodemailer": "^4.6.7",
     "passport": "*",
     "passport-jwt": "*"
   },

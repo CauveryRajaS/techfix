@@ -5,9 +5,12 @@ const jwt=require('jsonwebtoken');
 const config=require('../config/database');
 const User=require('../models/user');
 const Ticket=require('../models/ticket');
+const Token=require('../models/token');
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
 
 //Register
-
+/*
 router.post('/register', ( req, res, next) => {
     let newUser = new User({
         name:req.body.name,
@@ -27,6 +30,59 @@ router.post('/register', ( req, res, next) => {
         }
     });
 });
+*/
+
+
+router.post('/register', ( req, res, next) => {
+    req.assert('name', 'Name cannot be blank').notEmpty();
+    req.assert('email', 'Email is not valid').isEmail();
+    req.assert('email', 'Email cannot be blank').notEmpty();
+    req.assert('password', 'Password must be at least 4 characters long').len(4);
+    req.sanitize('email').normalizeEmail({ remove_dots: false });
+  
+    // Check for validation errors    
+    var errors = req.validationErrors();
+    if (errors) { return res.status(400).send(errors); }
+  
+    // Make sure this account doesn't already exist
+    User.findOne({ email: req.body.email }, function (err, user) {
+  
+      // Make sure user doesn't already exist
+        if (user) return res.status(400).send({ msg: 'The email address you have entered is already associated with another account.' });
+    
+        let newUser = new User({
+            name:req.body.name,
+            email:req.body.email,
+            contact:req.body.contact,
+            password:req.body.password,
+            copy:req.body.copy,
+            question:req.body.question,
+            answer:req.body.answer
+        });
+        User.addUser(newUser,(err,user) => {
+            if(err) {
+                res.json({success:false,msg:'Failed to add user'});
+            } 
+            else {
+                // Create a verification token for this user
+                var token = new Token({ _userId: user._id, token: crypto.randomBytes(16).toString('hex') });
+                // Save the verification token
+                token.save(function (err) {
+                    if (err) { return res.status(500).send({ msg: err.message }); }
+                    var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: process.env.SENDGRID_USERNAME, pass: process.env.SENDGRID_PASSWORD } });
+                    //var mailOptions = { from: 'no-reply@yourwebapplication.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+                    var mailOptions = { from: 'no-reply@techfixsolutions.herokuapp.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+                    transporter.sendMail(mailOptions, function (err) {
+                        if (err) { return res.status(500).send({ msg: err.message }); }
+                        res.status(200).send('A verification email has been sent to ' + user.email + '.');
+                    });
+                });
+                res.json({success:true,msg:'user added successfully yet to be verified'});
+            }
+        });
+
+      });
+    });
 
 //Authenticate
 
@@ -43,25 +99,30 @@ router.post('/authenticate', ( req, res, next) => {
     
         User.comparePassword(password,user.password,(err,isMatch)=> {
             if(err) throw err;
-               
-            if(isMatch) {
-                console.log(user);
-                const token =jwt.sign(user.toObject(),config.secret, {
-                    expiresIn: 604800
-                });
-
-                res.json({
-                    success:true,
-                    token:'JWT '+token,
-                    user: {
-                        id: user._id,
-                        name: user.name,
-                        email:user.email
-                    }
-                });
+            
+            if(user.isVerified) {
+                if(isMatch) {
+                    console.log(user);
+                    const token =jwt.sign(user.toObject(),config.secret, {
+                        expiresIn: 604800
+                    });
+    
+                    res.json({
+                        success:true,
+                        token:'JWT '+token,
+                        user: {
+                            id: user._id,
+                            name: user.name,
+                            email:user.email
+                        }
+                    });
+                }
+                else {
+                    return res.json({success:false,msg:'wrong password'});
+                }
             }
             else {
-                return res.json({success:false,msg:'wrong password'});
+                return res.json({success:false, msg: 'Your account has not been verified.' }); 
             }
         });
     });
@@ -145,6 +206,72 @@ router.put('/profile/:email',( req, res, next) => {
                 });
             }
         }
+    });
+});
+
+
+router.post('/confirmation',( req, res, next) =>{
+    req.assert('email', 'Email is not valid').isEmail();
+    req.assert('email', 'Email cannot be blank').notEmpty();
+    req.assert('token', 'Token cannot be blank').notEmpty();
+    req.sanitize('email').normalizeEmail({ remove_dots: false });
+
+    // Check for validation errors    
+    var errors = req.validationErrors();
+    if (errors) return res.status(400).send(errors);
+
+    // Find a matching token
+    Token.findOne({ token: req.body.token }, function (err, token) {
+        if (!token) return res.status(400).send({ type: 'not-verified', msg: 'We were unable to find a valid token. Your token my have expired.' });
+
+        // If we found a token, find a matching user
+        User.findOne({ _id: token._userId }, function (err, user) {
+            if (!user) return res.status(400).send({ msg: 'We were unable to find a user for this token.' });
+            if (user.isVerified) return res.status(400).send({ type: 'already-verified', msg: 'This user has already been verified.' });
+
+            // Verify and save the user
+            user.isVerified = true;
+            user.save(function (err) {
+                if (err) { return res.status(500).send({ msg: err.message }); }
+                res.status(200).send("The account has been verified. Please log in.");
+            });
+        });
+    });
+});
+
+/**
+* POST /resend
+*/
+
+router.post('/resend',( req, res, next) =>{
+    req.assert('email', 'Email is not valid').isEmail();
+    req.assert('email', 'Email cannot be blank').notEmpty();
+    req.sanitize('email').normalizeEmail({ remove_dots: false });
+
+    // Check for validation errors    
+    var errors = req.validationErrors();
+    if (errors) return res.status(400).send(errors);
+
+    User.findOne({ email: req.body.email }, function (err, user) {
+        if (!user) return res.status(400).send({ msg: 'We were unable to find a user with that email.' });
+        if (user.isVerified) return res.status(400).send({ msg: 'This account has already been verified. Please log in.' });
+
+        // Create a verification token, save it, and send email
+        var token = new Token({ _userId: user._id, token: crypto.randomBytes(16).toString('hex') });
+
+        // Save the token
+        token.save(function (err) {
+            if (err) { return res.status(500).send({ msg: err.message }); }
+
+            // Send the email
+            var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: process.env.SENDGRID_USERNAME, pass: process.env.SENDGRID_PASSWORD } });
+            var mailOptions = { from: 'no-reply@techfixsolutions.herokuapp.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+            transporter.sendMail(mailOptions, function (err) {
+                if (err) { return res.status(500).send({ msg: err.message }); }
+                res.status(200).send('A verification email has been sent to ' + user.email + '.');
+            });
+        });
+
     });
 });
 

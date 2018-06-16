@@ -30,6 +30,10 @@ const userSchema=mongoose.Schema({
     answer: {
         type:String,
         required:true
+    },
+    isVerified: { 
+        type: Boolean, 
+        default: false 
     }
 });
 
