@@ -16,7 +16,7 @@ export class AuthService {
   registerUser(user) {
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    console.log('reg...');
+    console.log('register...');
     return this.http.post('users/register',user,{headers:headers})
     .map(res => res.json()); 
   }
@@ -24,7 +24,7 @@ export class AuthService {
   authenticateUser(user) {
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    console.log('auth...');
+    console.log('authenticate...');
     return this.http.post('users/authenticate',user,{headers:headers})
     .map(res => res.json()); 
   }
