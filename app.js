@@ -6,6 +6,7 @@ const passport=require('passport');
 const mongoose=require('mongoose');
 const config=require('./config/database');
 const multer = require('multer');
+const nodemailer=require('nodemailer'); 
 
 //connect to database
 mongoose.connect(config.database);
@@ -28,8 +29,8 @@ const users=require('./routes/users');
 
 
 //Port Number
-const port=process.env.PORT || 8080;
-//const port=3000;
+//const port=process.env.PORT || 8080;
+const port=3000;
 
 //CORS Middleware
 app.use(cors());

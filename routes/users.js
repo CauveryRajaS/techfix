@@ -12,6 +12,7 @@ const nodemailer = require('nodemailer');
 //Register
 /*
 router.post('/register', ( req, res, next) => {
+    console.log('registering...');
     let newUser = new User({
         name:req.body.name,
         email:req.body.email,
@@ -33,16 +34,17 @@ router.post('/register', ( req, res, next) => {
 */
 
 
-router.post('/register', ( req, res, next) => {
+router.post('/register', ( req, res, next) => {/*
     req.assert('name', 'Name cannot be blank').notEmpty();
     req.assert('email', 'Email is not valid').isEmail();
     req.assert('email', 'Email cannot be blank').notEmpty();
     req.assert('password', 'Password must be at least 4 characters long').len(4);
-    req.sanitize('email').normalizeEmail({ remove_dots: false });
+    req.sanitize('email').normalizeEmail({ remove_dots: false });*/
   
-    // Check for validation errors    
+    // Check for validation errors  
+    /*  
     var errors = req.validationErrors();
-    if (errors) { return res.status(400).send(errors); }
+    if (errors) { return res.status(400).send(errors); }*/
   
     // Make sure this account doesn't already exist
     User.findOne({ email: req.body.email }, function (err, user) {
@@ -69,17 +71,44 @@ router.post('/register', ( req, res, next) => {
                 // Save the verification token
                 token.save(function (err) {
                     //if (err) { return res.status(500).send({ msg: err.message }); }
-                    if (err) { return res.json({ msg: err.message,error:err,show:'error1' }); }
-                    var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: process.env.SENDGRID_USERNAME, pass: process.env.SENDGRID_PASSWORD } });
-                    //var mailOptions = { from: 'no-reply@yourwebapplication.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
-                    var mailOptions = { from: 'no-reply@techfixsolutions.herokuapp.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
-                    transporter.sendMail(mailOptions, function (err) {
-                        //if (err) { return res.status(500).send({ msg: err.message }); }
-                    if (err) { return res.json({ msg: err.message,error:err,show:'error2' }); }
-                        res.status(200).send('A verification email has been sent to ' + user.email + '.');
-                    });
+                    if (err) { 
+                        console.log('error1');
+                        return res.json({ msg: err.message,error:err,show:'error1' });
+                    }
+                    else  {
+                        const transporter = nodemailer.createTransport({ 
+                            host: 'mail.gmail.com',
+                            service: 'Gmail', /*
+                            auth: { 
+                                user: process.env.SENDGRID_USERNAME, 
+                                pass: process.env.SENDGRID_PASSWORD 
+                            } */
+                            auth: { 
+                                user: 'testtechfix@gmail.com', 
+                                pass: 'techfix1' 
+                            }
+                        });
+
+                        //var mailOptions = { from: 'no-reply@yourwebapplication.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+                        const mailOptions = { 
+                            from: 'testtechfix@gmail.com', 
+                            to: user.email, 
+                            subject: 'Account Verification Token', 
+                            text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' 
+                        };
+                        transporter.sendMail(mailOptions, function (err) {
+                            //if (err) { return res.status(500).send({ msg: err.message }); }
+                            if (err) {
+                                console.log('error2'); 
+                                return res.json({ msg: err.message,error:err,show:'error2' }); 
+                            }
+                            else {
+                                res.json({success:true,msg:'user added successfully yet to be verified'});
+                            }
+                            //res.status(200).send('A verification email has been sent to ' + user.email + '.');
+                        });
+                    }
                 });
-                res.json({success:true,msg:'user added successfully yet to be verified'});
             }
         });
 
@@ -93,6 +122,7 @@ router.post('/authenticate', ( req, res, next) => {
     const password=req.body.password;
 
     
+    console.log('authenticating...');
     User.getUserByEmail(email, (err, user) => {
         if(err) throw err;
         if(!user) {
