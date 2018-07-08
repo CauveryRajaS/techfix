@@ -56,7 +56,7 @@ router.post('/register', ( req, res, next) => {/*
     if (user) {  
         return res.json({ success:false, msg: 'The email address you have entered is already associated with another account.' });    
     } 
-    else {
+    //else {
         
         let newUser = new User({
             name:req.body.name,
@@ -117,7 +117,7 @@ router.post('/register', ( req, res, next) => {/*
                 });
             }
         });
-    }
+    //}
       });
     });
 
