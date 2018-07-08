@@ -50,8 +50,14 @@ router.post('/register', ( req, res, next) => {/*
     User.findOne({ email: req.body.email }, function (err, user) {
   
       // Make sure user doesn't already exist
-        if (user) return res.status(400).send({ msg: 'The email address you have entered is already associated with another account.' });
+    //    if (user) return res.status(400).send({ msg: 'The email address you have entered is already associated with another account.' });
     
+        
+    if (user) {  
+        return res.json({ success:false, msg: 'The email address you have entered is already associated with another account.' });    
+    } 
+    else {
+        
         let newUser = new User({
             name:req.body.name,
             email:req.body.email,
@@ -111,7 +117,7 @@ router.post('/register', ( req, res, next) => {/*
                 });
             }
         });
-
+    }
       });
     });
 
