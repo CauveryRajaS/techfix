@@ -1039,7 +1039,7 @@ var RegisterComponent = (function () {
                     _this.router.navigate(['/login']);
                 }
                 else {
-                    _this.flashMessage.show('Log in unsuccessful , please try again', { cssClass: 'alert-danger', timeout: 3000 });
+                    _this.flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
                     _this.router.navigate(['/register']);
                 }
             });
