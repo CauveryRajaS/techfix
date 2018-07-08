@@ -1033,7 +1033,7 @@ var RegisterComponent = (function () {
             }
             //Register user
             this.authService.registerUser(user).subscribe(function (data) {
-                console.log('registering..');
+                console.log('registering...');
                 if (data.success) {
                     _this.flashMessage.show('You are now registered successfully and can log in', { cssClass: 'alert-success', timeout: 3000 });
                     _this.router.navigate(['/login']);
