@@ -92,9 +92,10 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_result_result_component__ = __webpack_require__("../../../../../src/app/components/result/result.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_report_report_component__ = __webpack_require__("../../../../../src/app/components/report/report.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_confirm_confirm_component__ = __webpack_require__("../../../../../src/app/components/confirm/confirm.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__ = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_sent_sent_component__ = __webpack_require__("../../../../../src/app/components/sent/sent.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__ = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -132,6 +133,7 @@ import { EssayComponent } from './components/essay/essay.component';*/
 
 
 
+
 /*import {ImageService} from './services/image.service';
 import { TestGuard } from './guards/test.guard';
 import { EvaluateGuard } from './guards/evaluate.guard';*/
@@ -139,11 +141,12 @@ var appRoutes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_8__components_home_home_component__["a" /* HomeComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_9__components_register_register_component__["a" /* RegisterComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_10__components_login_login_component__["a" /* LoginComponent */] },
-    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_11__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'result', component: __WEBPACK_IMPORTED_MODULE_13__components_result_result_component__["a" /* ResultComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'report', component: __WEBPACK_IMPORTED_MODULE_14__components_report_report_component__["a" /* ReportComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'confirm/:token', component: __WEBPACK_IMPORTED_MODULE_15__components_confirm_confirm_component__["a" /* ConfirmComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]] }
+    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_11__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'result', component: __WEBPACK_IMPORTED_MODULE_13__components_result_result_component__["a" /* ResultComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'report', component: __WEBPACK_IMPORTED_MODULE_14__components_report_report_component__["a" /* ReportComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'confirmation/:token', component: __WEBPACK_IMPORTED_MODULE_15__components_confirm_confirm_component__["a" /* ConfirmComponent */] },
+    { path: 'sent/:email', component: __WEBPACK_IMPORTED_MODULE_16__components_sent_sent_component__["a" /* SentComponent */] }
     /*
       {path:'logic', component:LogicComponent, canActivate:[AuthGuard,TestGuard,EvaluateGuard] },
       {path:'lgmenu', component:LgmenuComponent, canActivate:[AuthGuard,TestGuard,EvaluateGuard] },
@@ -176,6 +179,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_13__components_result_result_component__["a" /* ResultComponent */],
             __WEBPACK_IMPORTED_MODULE_14__components_report_report_component__["a" /* ReportComponent */],
             __WEBPACK_IMPORTED_MODULE_15__components_confirm_confirm_component__["a" /* ConfirmComponent */],
+            __WEBPACK_IMPORTED_MODULE_16__components_sent_sent_component__["a" /* SentComponent */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -184,7 +188,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */].forRoot(appRoutes),
             __WEBPACK_IMPORTED_MODULE_5_angular2_flash_messages__["FlashMessagesModule"]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_17__services_validate_service__["a" /* ValidateService */], __WEBPACK_IMPORTED_MODULE_16__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_18__services_validate_service__["a" /* ValidateService */], __WEBPACK_IMPORTED_MODULE_17__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_19__guards_auth_guard__["a" /* AuthGuard */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
@@ -1060,7 +1064,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"container card\">\n    <h2 class=\"page-header\">Register</h2>\n    <form (submit)=\"onRegisterSubmit()\">\n      <div class=\"form-group\">\n        <label>Name<sup>*</sup></label>\n        <input type=\"text\" placeholder=\"Enter your full name\" class=\"form-control\" [(ngModel)]=\"name\" name=\"name\">\n      </div>\n\n      <div class=\"form-group\">\n        <label>Contact<sup>*</sup></label>\n        <input type=\"text\" placeholder=\"Enter your contact no.\" class=\"form-control\" [(ngModel)]=\"contact\" name=\"contact\">\n      </div>\n\n    <!--\n      <input type=\"radio\" name=\"options\" value=\"op3\" (click)=\"checkFlag('3')\"/>{{apt1.option3}}<br>\n      <input type=\"radio\" name=\"options\" value=\"op4\" (click)=\"checkFlag('4')\"/>{{apt1.option4}}<br>\n    -->\n\n      <div class=\"form-group\">\n        <label>Email<sup>*</sup></label>\n        <input type=\"text\" placeholder=\"Enter your work email\" class=\"form-control\" [(ngModel)]=\"email\" name=\"email\">\n      </div>\n      <div class=\"form-group\">\n        <label>Password<sup>*</sup></label>\n        <input type=\"password\" placeholder=\"Enter a strong password\" class=\"form-control\" [(ngModel)]=\"password\" name=\"password\">\n      </div>\n      <div class=\"form-group\">\n        <label>Password Recovery Question<sup>*</sup></label>\n        <input type=\"text\" placeholder=\"Enter any personal question\" class=\"form-control\" [(ngModel)]=\"question\" name=\"question\">\n      </div>\n      <div class=\"form-group\">\n        <label>Answer<sup>*</sup></label>\n        <input type=\"text\" placeholder=\"Definite answer\" class=\"form-control\" [(ngModel)]=\"answer\" name=\"answer\">\n      </div>\n      <input type=\"submit\" class=\"registerbtn\" value=\"Submit\">\n    </form>\n</div>\n\n<div *ngIf=\"spin\" id=\"container\">\n  <div class=\"loadingbar\"></div>\n</div>\n  "
+module.exports = "\n<div class=\"container card\">\n    <h2 class=\"page-header\">Register</h2>\n    <form (submit)=\"onRegisterSubmit()\">\n      <div class=\"form-group\">\n        <label>Name<sup>*</sup></label>\n        <input type=\"text\" placeholder=\"Enter your full name\" class=\"form-control\" [(ngModel)]=\"name\" name=\"name\">\n      </div>\n\n      <div class=\"form-group\">\n        <label>Contact<sup>*</sup></label>\n        <input type=\"text\" placeholder=\"Enter your contact no.\" class=\"form-control\" [(ngModel)]=\"contact\" name=\"contact\">\n      </div>\n\n    <!--\n      <input type=\"radio\" name=\"options\" value=\"op3\" (click)=\"checkFlag('3')\"/>{{apt1.option3}}<br>\n      <input type=\"radio\" name=\"options\" value=\"op4\" (click)=\"checkFlag('4')\"/>{{apt1.option4}}<br>\n    -->\n\n      <div class=\"form-group\">\n        <label>Email<sup>*</sup></label>\n        <input type=\"text\" placeholder=\"Enter your work email\" class=\"form-control\" [(ngModel)]=\"email\" name=\"email\">\n      </div><!--\n      <div class=\"form-group\">\n        <label>Password<sup>*</sup></label>\n        <input type=\"password\" placeholder=\"Enter a strong password\" class=\"form-control\" [(ngModel)]=\"password\" name=\"password\">\n      </div>\n      <div class=\"form-group\">\n        <label>Password Recovery Question<sup>*</sup></label>\n        <input type=\"text\" placeholder=\"Enter any personal question\" class=\"form-control\" [(ngModel)]=\"question\" name=\"question\">\n      </div>\n      <div class=\"form-group\">\n        <label>Answer<sup>*</sup></label>\n        <input type=\"text\" placeholder=\"Definite answer\" class=\"form-control\" [(ngModel)]=\"answer\" name=\"answer\">\n      </div>-->\n      <input type=\"submit\" class=\"registerbtn\" value=\"Submit\">\n    </form>\n</div>\n\n<div *ngIf=\"spin\" id=\"container\">\n  <div class=\"loadingbar\"></div>\n</div>\n  "
 
 /***/ }),
 
@@ -1111,11 +1115,11 @@ var RegisterComponent = (function () {
             var user = {
                 name: this.name,
                 contact: this.contact,
-                email: this.email,
-                password: this.password,
-                copy: this.password,
-                question: this.question,
-                answer: this.answer
+                email: this.email /*,
+                password:this.password,
+                copy:this.password,
+                question:this.question,
+                answer:this.answer*/
             };
             console.log(user);
             //Require fields
@@ -1135,7 +1139,7 @@ var RegisterComponent = (function () {
                 console.log('registering...');
                 if (data.success) {
                     _this.flashMessage.show('You are now registered successfully and can log in', { cssClass: 'alert-success', timeout: 3000 });
-                    _this.router.navigate(['/login']);
+                    _this.router.navigate(['/sent/$this.email']);
                 }
                 else {
                     _this.flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
@@ -1147,11 +1151,11 @@ var RegisterComponent = (function () {
             var user = {
                 name: this.name,
                 contact: this.contact,
-                email: this.email,
-                password: this.password,
-                copy: this.password,
-                question: this.question,
-                answer: this.answer.toLowerCase()
+                email: this.email /*,
+                password:this.password,
+                copy:this.password,
+                question:this.question,
+                answer:this.answer.toLowerCase()*/
             };
             console.log(user);
             //Require fields
@@ -1169,7 +1173,7 @@ var RegisterComponent = (function () {
                 console.log('registering..');
                 if (data.success) {
                     _this.flashMessage.show('You are now registered successfully and can log in', { cssClass: 'alert-success', timeout: 3000 });
-                    _this.router.navigate(['/login']);
+                    _this.router.navigate(['/sent/$this.email']);
                 }
                 else {
                     _this.flashMessage.show('Log in unsuccessful , please try again', { cssClass: 'alert-danger', timeout: 3000 });
@@ -1177,29 +1181,6 @@ var RegisterComponent = (function () {
                 }
             });
         }
-    };
-    RegisterComponent.prototype.onResend = function () {
-        var _this = this;
-        var user = {
-            name: this.name,
-            contact: this.contact,
-            email: this.email,
-            password: this.password,
-            copy: this.password,
-            question: this.question,
-            answer: this.answer
-        };
-        this.authService.resend(user).subscribe(function (data) {
-            console.log('resending..');
-            if (data.success) {
-                console.log('sent..');
-                _this.flashMessage.show(data.msg, { cssClass: 'alert-success', timeout: 3000 });
-            }
-            else {
-                console.log('not sent..');
-                _this.flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
-            }
-        });
     };
     return RegisterComponent;
 }());
@@ -1435,6 +1416,94 @@ ResultComponent = __decorate([
 
 var _a, _b, _c;
 //# sourceMappingURL=result.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/sent/sent.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/sent/sent.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h3>\n  An activation link has been sent to your email!\n</h3>\n\n<p>\n  If not click here\n</p>\n<button (click)=\"onResend()\" class=\"btn btn-default\">Resend</button>\n\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/sent/sent.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SentComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var SentComponent = (function () {
+    function SentComponent(flashMessage, authService, route) {
+        this.flashMessage = flashMessage;
+        this.authService = authService;
+        this.route = route;
+    }
+    SentComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.email = this.route.snapshot.paramMap.get('email');
+        var user = {
+            email: this.email
+        };
+        this.authService.resend(user).subscribe(function (data) {
+            console.log('resending..');
+            if (data.success) {
+                console.log('sent..');
+                _this.flashMessage.show(data.msg, { cssClass: 'alert-success', timeout: 3000 });
+            }
+            else {
+                console.log('not sent..');
+                _this.flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
+            }
+        });
+    };
+    return SentComponent;
+}());
+SentComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-sent',
+        template: __webpack_require__("../../../../../src/app/components/sent/sent.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/sent/sent.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+], SentComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=sent.component.js.map
 
 /***/ }),
 

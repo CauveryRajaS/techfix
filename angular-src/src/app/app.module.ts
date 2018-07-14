@@ -28,6 +28,7 @@ import { EssayComponent } from './components/essay/essay.component';*/
 import { ResultComponent } from './components/result/result.component';
 import { ReportComponent } from './components/report/report.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
+import { SentComponent } from './components/sent/sent.component';
 
 import { AuthService } from './services/auth.service';
 import { ValidateService } from './services/validate.service';
@@ -45,8 +46,9 @@ const appRoutes: Routes=[
   {path:'dashboard', component:DashboardComponent, canActivate:[AuthGuard] },
   {path:'profile', component:ProfileComponent, canActivate:[AuthGuard] },
   {path:'result', component:ResultComponent, canActivate:[AuthGuard] },
-  {path:'report', component:ReportComponent, canActivate:[AuthGuard]},
-  {path:'confirm/:token', component:ConfirmComponent, canActivate:[AuthGuard]}
+  {path:'report', component:ReportComponent, canActivate:[AuthGuard] },
+  {path:'confirmation/:token', component:ConfirmComponent },
+  {path:'sent/:email', component:SentComponent }
 /*
   {path:'logic', component:LogicComponent, canActivate:[AuthGuard,TestGuard,EvaluateGuard] },
   {path:'lgmenu', component:LgmenuComponent, canActivate:[AuthGuard,TestGuard,EvaluateGuard] },
@@ -74,6 +76,7 @@ const appRoutes: Routes=[
     ResultComponent,
     ReportComponent,
     ConfirmComponent,
+    SentComponent,
     /*LogicComponent,
     LgmenuComponent,
     ApmenuComponent,

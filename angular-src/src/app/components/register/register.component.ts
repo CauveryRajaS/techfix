@@ -39,11 +39,11 @@ export class RegisterComponent implements OnInit {
       const user = {
         name:this.name,
         contact:this.contact,
-        email:this.email,
+        email:this.email/*,
         password:this.password,
         copy:this.password,
         question:this.question,
-        answer:this.answer
+        answer:this.answer*/
       }
 
 
@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
             console.log('registering...');
             if(data.success) {
               this.flashMessage.show('You are now registered successfully and can log in',{cssClass:'alert-success',timeout:3000});
-              this.router.navigate(['/login']);
+              this.router.navigate(['/sent/$this.email']);
             }
             else {
               this.flashMessage.show(data.msg,{cssClass:'alert-danger',timeout:3000});
@@ -80,11 +80,11 @@ export class RegisterComponent implements OnInit {
         const user = {
           name:this.name,
           contact:this.contact,
-          email:this.email,
+          email:this.email/*,
           password:this.password,
           copy:this.password,
           question:this.question,
-          answer:this.answer.toLowerCase()
+          answer:this.answer.toLowerCase()*/
         }
 
 
@@ -107,7 +107,7 @@ export class RegisterComponent implements OnInit {
             console.log('registering..');
             if(data.success) {
               this.flashMessage.show('You are now registered successfully and can log in',{cssClass:'alert-success',timeout:3000});
-              this.router.navigate(['/login']);
+              this.router.navigate(['/sent/$this.email']);
             }
             else {
               this.flashMessage.show('Log in unsuccessful , please try again',{cssClass:'alert-danger',timeout:3000});
@@ -118,29 +118,6 @@ export class RegisterComponent implements OnInit {
 
     }
 
-    onResend() {
-      const user = {
-        name:this.name,
-        contact:this.contact,
-        email:this.email,
-        password:this.password,
-        copy:this.password,
-        question:this.question,
-        answer:this.answer
-      }
-
-      this.authService.resend(user).subscribe(data => {
-        console.log('resending..');
-        if(data.success) {
-          console.log('sent..');
-          this.flashMessage.show(data.msg,{cssClass:'alert-success',timeout:3000});
-        }
-        else {
-          console.log('not sent..');
-          this.flashMessage.show(data.msg,{cssClass:'alert-danger',timeout:3000});
-        }
-      });
-    }
-
+    
 }
 
