@@ -249,6 +249,7 @@ router.put('/profile/:email',( req, res, next) => {
 
 
 router.post('/confirmation',( req, res, next) =>{
+    /*
     req.assert('email', 'Email is not valid').isEmail();
     req.assert('email', 'Email cannot be blank').notEmpty();
     req.assert('token', 'Token cannot be blank').notEmpty();
@@ -256,22 +257,22 @@ router.post('/confirmation',( req, res, next) =>{
 
     // Check for validation errors    
     var errors = req.validationErrors();
-    if (errors) return res.status(400).send(errors);
+    if (errors) return res.status(400).send(errors);*/
 
     // Find a matching token
     Token.findOne({ token: req.body.token }, function (err, token) {
-        if (!token) return res.status(400).send({ type: 'not-verified', msg: 'We were unable to find a valid token. Your token my have expired.' });
+        if (!token) return res.json({ success:false, type: 'not-verified', msg: 'We were unable to find a valid token. Your token may have expired.' });
 
         // If we found a token, find a matching user
         User.findOne({ _id: token._userId }, function (err, user) {
-            if (!user) return res.status(400).send({ msg: 'We were unable to find a user for this token.' });
-            if (user.isVerified) return res.status(400).send({ type: 'already-verified', msg: 'This user has already been verified.' });
+            if (!user) return res.json({ success:false, msg: 'We were unable to find a user for this token.' });
+            if (user.isVerified) return res.json({ success:false, type: 'already-verified', msg: 'This user has already been verified. Login to proceed...' });
 
             // Verify and save the user
             user.isVerified = true;
             user.save(function (err) {
-                if (err) { return res.status(500).send({ msg: err.message }); }
-                res.status(200).send("The account has been verified. Please log in.");
+                if (err) { return res.json({ success:false, msg: err.message }); }
+                res.json({ success:true, msg:"Your account has been verified. Please create your password."});
             });
         });
     });
@@ -281,32 +282,46 @@ router.post('/confirmation',( req, res, next) =>{
 * POST /resend
 */
 
-router.post('/resend',( req, res, next) =>{
+router.post('/resend',( req, res, next) =>{/*
     req.assert('email', 'Email is not valid').isEmail();
     req.assert('email', 'Email cannot be blank').notEmpty();
     req.sanitize('email').normalizeEmail({ remove_dots: false });
 
     // Check for validation errors    
     var errors = req.validationErrors();
-    if (errors) return res.status(400).send(errors);
+    if (errors) return res.status(400).send(errors);*/
 
     User.findOne({ email: req.body.email }, function (err, user) {
-        if (!user) return res.status(400).send({ msg: 'We were unable to find a user with that email.' });
-        if (user.isVerified) return res.status(400).send({ msg: 'This account has already been verified. Please log in.' });
+        if (!user) return res.json({ success:false, msg: 'We were unable to find a user with that email.' });
+        if (user.isVerified) return res.json({ success:false, msg: 'This account has already been verified. Please log in.' });
 
         // Create a verification token, save it, and send email
         var token = new Token({ _userId: user._id, token: crypto.randomBytes(16).toString('hex') });
 
         // Save the token
         token.save(function (err) {
-            if (err) { return res.status(500).send({ msg: err.message }); }
+            if (err) { return res.json({ success:false, msg: err.message }); }
 
             // Send the email
-            var transporter = nodemailer.createTransport({ service: 'Sendgrid', auth: { user: process.env.SENDGRID_USERNAME, pass: process.env.SENDGRID_PASSWORD } });
-            var mailOptions = { from: 'no-reply@techfixsolutions.herokuapp.com', to: user.email, subject: 'Account Verification Token', text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' };
+            const transporter = nodemailer.createTransport({ 
+                host: 'mail.gmail.com',
+                service: 'Gmail',
+                auth: { 
+                    user: 'testtechfix@gmail.com', 
+                    pass: 'techfix1' 
+                }
+            });
+            
+            const mailOptions = { 
+                from: 'testtechfix@gmail.com', 
+                to: user.email, 
+                subject: 'Account Verification Token', 
+                text: 'Hello,\n\n' + 'Please verify your account by clicking the link: \nhttps:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n' 
+            };
+            
             transporter.sendMail(mailOptions, function (err) {
-                if (err) { return res.status(500).send({ msg: err.message }); }
-                res.status(200).send('A verification email has been sent to ' + user.email + '.');
+                if (err) { return res.json({success:false, msg: err.message }); }
+                res.json({ success:true,msg:'A verification email has been sent to ' + user.email + '.'});
             });
         });
 

@@ -91,9 +91,10 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_result_result_component__ = __webpack_require__("../../../../../src/app/components/result/result.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_report_report_component__ = __webpack_require__("../../../../../src/app/components/report/report.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__guards_auth_guard__ = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_confirm_confirm_component__ = __webpack_require__("../../../../../src/app/components/confirm/confirm.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__ = __webpack_require__("../../../../../src/app/guards/auth.guard.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -130,6 +131,7 @@ import { EssayComponent } from './components/essay/essay.component';*/
 
 
 
+
 /*import {ImageService} from './services/image.service';
 import { TestGuard } from './guards/test.guard';
 import { EvaluateGuard } from './guards/evaluate.guard';*/
@@ -137,10 +139,11 @@ var appRoutes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_8__components_home_home_component__["a" /* HomeComponent */] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_9__components_register_register_component__["a" /* RegisterComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_10__components_login_login_component__["a" /* LoginComponent */] },
-    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_11__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_17__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_17__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'result', component: __WEBPACK_IMPORTED_MODULE_13__components_result_result_component__["a" /* ResultComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_17__guards_auth_guard__["a" /* AuthGuard */]] },
-    { path: 'report', component: __WEBPACK_IMPORTED_MODULE_14__components_report_report_component__["a" /* ReportComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_17__guards_auth_guard__["a" /* AuthGuard */]] }
+    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_11__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'result', component: __WEBPACK_IMPORTED_MODULE_13__components_result_result_component__["a" /* ResultComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'report', component: __WEBPACK_IMPORTED_MODULE_14__components_report_report_component__["a" /* ReportComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]] },
+    { path: 'confirm/:token', component: __WEBPACK_IMPORTED_MODULE_15__components_confirm_confirm_component__["a" /* ConfirmComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]] }
     /*
       {path:'logic', component:LogicComponent, canActivate:[AuthGuard,TestGuard,EvaluateGuard] },
       {path:'lgmenu', component:LgmenuComponent, canActivate:[AuthGuard,TestGuard,EvaluateGuard] },
@@ -172,6 +175,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */],
             __WEBPACK_IMPORTED_MODULE_13__components_result_result_component__["a" /* ResultComponent */],
             __WEBPACK_IMPORTED_MODULE_14__components_report_report_component__["a" /* ReportComponent */],
+            __WEBPACK_IMPORTED_MODULE_15__components_confirm_confirm_component__["a" /* ConfirmComponent */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -180,12 +184,107 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */].forRoot(appRoutes),
             __WEBPACK_IMPORTED_MODULE_5_angular2_flash_messages__["FlashMessagesModule"]
         ],
-        providers: [__WEBPACK_IMPORTED_MODULE_16__services_validate_service__["a" /* ValidateService */], __WEBPACK_IMPORTED_MODULE_15__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_17__guards_auth_guard__["a" /* AuthGuard */]],
+        providers: [__WEBPACK_IMPORTED_MODULE_17__services_validate_service__["a" /* ValidateService */], __WEBPACK_IMPORTED_MODULE_16__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
 //# sourceMappingURL=app.module.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/confirm/confirm.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/confirm/confirm.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"success\">\n  <div class=\"container card\">\n    <h2 class=\"page-header\">Create your password</h2>\n    <form (submit)=\"onRegisterSubmit()\">\n      <div class=\"form-group\">\n        <label>Password<sup>*</sup></label>\n        <input type=\"password\" placeholder=\"Enter a strong password\" class=\"form-control\" [(ngModel)]=\"password\" name=\"password\">\n      </div>\n      <div class=\"form-group\">\n        <label>Confirm Password<sup>*</sup></label>\n        <input type=\"password\" placeholder=\"Retype password\" class=\"form-control\" [(ngModel)]=\"retypePassword\" name=\"retypePassword\">\n      </div>\n      <input type=\"submit\" class=\"registerbtn\" value=\"Confirm\">\n    </form>\n  </div>\n</div>\n<div *ngIf=\"failure\">\n  {{failureMsg}}\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/confirm/confirm.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConfirmComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var ConfirmComponent = (function () {
+    function ConfirmComponent(flashMessage, authService, route) {
+        this.flashMessage = flashMessage;
+        this.authService = authService;
+        this.route = route;
+        this.failureMsg = '';
+    }
+    ConfirmComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.token = this.route.snapshot.paramMap.get('token');
+        var user = {
+            token: this.token
+        };
+        this.authService.confirmUser(user).subscribe(function (data) {
+            console.log('confirming..');
+            if (data.success) {
+                console.log('confirmed..');
+                _this.flashMessage.show(data.msg, { cssClass: 'alert-success', timeout: 3000 });
+                _this.success = true;
+                _this.failure = false;
+            }
+            else {
+                console.log('not confirmed..');
+                _this.flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
+                _this.success = false;
+                _this.failure = true;
+                _this.failureMsg = data.msg;
+                //this.router.navigate(['/register']);
+            }
+        });
+    };
+    return ConfirmComponent;
+}());
+ConfirmComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-confirm',
+        template: __webpack_require__("../../../../../src/app/components/confirm/confirm.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/components/confirm/confirm.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angular2_flash_messages__["FlashMessagesService"]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+], ConfirmComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=confirm.component.js.map
 
 /***/ }),
 
@@ -1079,6 +1178,29 @@ var RegisterComponent = (function () {
             });
         }
     };
+    RegisterComponent.prototype.onResend = function () {
+        var _this = this;
+        var user = {
+            name: this.name,
+            contact: this.contact,
+            email: this.email,
+            password: this.password,
+            copy: this.password,
+            question: this.question,
+            answer: this.answer
+        };
+        this.authService.resend(user).subscribe(function (data) {
+            console.log('resending..');
+            if (data.success) {
+                console.log('sent..');
+                _this.flashMessage.show(data.msg, { cssClass: 'alert-success', timeout: 3000 });
+            }
+            else {
+                console.log('not sent..');
+                _this.flashMessage.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
+            }
+        });
+    };
     return RegisterComponent;
 }());
 RegisterComponent = __decorate([
@@ -1404,6 +1526,20 @@ var AuthService = (function () {
         headers.append('Content-Type', 'application/json');
         console.log('authenticate...');
         return this.http.post('users/authenticate', user, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    AuthService.prototype.confirmUser = function (user) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        console.log('confirmation...');
+        return this.http.post('users/confirmation', user, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    AuthService.prototype.resend = function (user) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        headers.append('Content-Type', 'application/json');
+        console.log('resending...');
+        return this.http.post('users/resend', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.getUser = function (link) {

@@ -118,5 +118,29 @@ export class RegisterComponent implements OnInit {
 
     }
 
+    onResend() {
+      const user = {
+        name:this.name,
+        contact:this.contact,
+        email:this.email,
+        password:this.password,
+        copy:this.password,
+        question:this.question,
+        answer:this.answer
+      }
+
+      this.authService.resend(user).subscribe(data => {
+        console.log('resending..');
+        if(data.success) {
+          console.log('sent..');
+          this.flashMessage.show(data.msg,{cssClass:'alert-success',timeout:3000});
+        }
+        else {
+          console.log('not sent..');
+          this.flashMessage.show(data.msg,{cssClass:'alert-danger',timeout:3000});
+        }
+      });
+    }
+
 }
 

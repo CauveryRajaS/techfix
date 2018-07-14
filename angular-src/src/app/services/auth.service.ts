@@ -29,6 +29,22 @@ export class AuthService {
     .map(res => res.json()); 
   }
 
+  confirmUser(user) {
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    console.log('confirmation...');
+    return this.http.post('users/confirmation',user,{headers:headers})
+    .map(res => res.json()); 
+  }
+
+  resend(user) {
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+    console.log('resending...');
+    return this.http.post('users/resend',user,{headers:headers})
+    .map(res => res.json()); 
+  }
+
   getUser(link) {
     console.log('getting user from:'+link);
     let headers = new Headers();

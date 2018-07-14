@@ -1,0 +1,19 @@
+<div *ngIf="success">
+  <div class="container card">
+    <h2 class="page-header">Create your password</h2>
+    <form (submit)="onRegisterSubmit()">
+      <div class="form-group">
+        <label>Password<sup>*</sup></label>
+        <input type="password" placeholder="Enter a strong password" class="form-control" [(ngModel)]="password" name="password">
+      </div>
+      <div class="form-group">
+        <label>Confirm Password<sup>*</sup></label>
+        <input type="password" placeholder="Retype password" class="form-control" [(ngModel)]="retypePassword" name="retypePassword">
+      </div>
+      <input type="submit" class="registerbtn" value="Confirm">
+    </form>
+  </div>
+</div>
+<div *ngIf="failure">
+  {{failureMsg}}
+</div>
