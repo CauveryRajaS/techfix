@@ -66,10 +66,10 @@ router.post('/register', ( req, res, next) => {/*
             copy:req.body.copy,
             question:req.body.question,
             answer:req.body.answer*/
-            password:'',
-            copy:'',
-            question:'',
-            answer:''
+            password:'empty',
+            copy:'empty',
+            question:'empty',
+            answer:'empty'
         });
         User.addUser(newUser,(err,user) => {
             if(err) {
