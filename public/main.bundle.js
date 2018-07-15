@@ -1935,8 +1935,7 @@ var ValidateService = (function () {
     function ValidateService() {
     }
     ValidateService.prototype.validateRegister = function (user) {
-        if (user.name == undefined || user.email == undefined || user.contact == undefined || user.password == undefined
-            || user.question == undefined || user.answer == undefined) {
+        if (user.name == undefined || user.email == undefined || user.contact == undefined) {
             console.log('inside false');
             return false;
         }

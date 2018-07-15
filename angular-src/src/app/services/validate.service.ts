@@ -5,9 +5,10 @@ export class ValidateService {
 
   constructor() { }
 
-  validateRegister(user) {
+  validateRegister(user) {/*
     if(user.name==undefined||user.email==undefined||user.contact==undefined||user.password==undefined
-      ||user.question==undefined||user.answer==undefined) {
+      ||user.question==undefined||user.answer==undefined) {*/
+    if(user.name==undefined||user.email==undefined||user.contact==undefined) {
       console.log('inside false');
       return false;
     } 
