@@ -61,11 +61,11 @@ router.post('/register', ( req, res, next) => {/*
         let newUser = new User({
             name:req.body.name,
             email:req.body.email,
-            contact:req.body.contact,
+            contact:req.body.contact/*,
             password:req.body.password,
             copy:req.body.copy,
             question:req.body.question,
-            answer:req.body.answer
+            answer:req.body.answer*/
         });
         User.addUser(newUser,(err,user) => {
             if(err) {
